@@ -1,0 +1,265 @@
+[
+  {
+    "id": "genomic-needles-ipdps-2026",
+    "type": "publication",
+    "category": "Papers",
+    "title": "Looking for (Genomic) Needles in a Haystack: Sparsity-Driven Search for Identifying Correlated Genetic Mutations in Cancer",
+    "year": 2026,
+    "venue": "IEEE International Parallel & Distributed Processing Symposium (IPDPS)",
+    "status": "To appear",
+    "authors": "R Prabhu, E Vatai, B Moussad, E Jeannot, R Anandakrishnan, W Feng, M Wahib",
+    "summary": "Scales sparsity-driven search for identifying correlated genetic mutations in cancer.",
+    "abstract": "This work studies how to identify correlated genetic mutation combinations in cancer by scaling sparsity-driven search over an irregular, combinatorial space. The systems focus is on hierarchical MPI work stealing, load balance, and full-scale HPC execution for scientific discovery.",
+    "areas": [
+      "Scientific HPC"
+    ],
+    "methods": [
+      "Sparse Search",
+      "MPI Work Stealing",
+      "Hierarchical Parallelism"
+    ],
+    "systems": [
+      "MPI",
+      "HPC Clusters"
+    ],
+    "keywords": [
+      "genomics",
+      "carcinogenesis",
+      "sparse search",
+      "MPI",
+      "work stealing",
+      "irregular workloads",
+      "scientific computing",
+      "mutation combinations",
+      "load balance"
+    ],
+    "links": {
+      "arxiv": "https://arxiv.org/abs/2603.16721",
+      "pdf": "https://arxiv.org/pdf/2603.16721"
+    },
+    "pdfPath": "assets/papers/genomic-needles-ipdps-2026.pdf",
+    "sortOrder": 0,
+    "shortTitle": "Correlated Mutation Search",
+    "venueShort": "IPDPS"
+  },
+  {
+    "id": "researchbot-botse-2025",
+    "type": "publication",
+    "category": "Workshop Papers",
+    "title": "ResearchBot: Bridging the Gap between Academic Research and Practical Programming Communities",
+    "year": 2025,
+    "venue": "IEEE/ACM International Workshop on Bots in Software Engineering (BotSE)",
+    "status": "Published",
+    "authors": "S Farzanepour, S Rajeev, H Liang, R Prabhu, C Brown",
+    "summary": "Explores how software bots can connect academic research with practical programming communities.",
+    "abstract": "This paper studies ResearchBot, a software-engineering bot aimed at bridging academic research and practical programming communities. It sits outside my main HPC thread but reflects an interest in systems that make research more usable by practitioners.",
+    "areas": [
+      "Research Tools"
+    ],
+    "methods": [
+      "Software Bots",
+      "Programmer Support"
+    ],
+    "systems": [
+      "GitHub",
+      "Developer Communities"
+    ],
+    "keywords": [
+      "bots",
+      "software engineering",
+      "research translation",
+      "programming communities"
+    ],
+    "links": {},
+    "pdfPath": "",
+    "sortOrder": 1,
+    "shortTitle": "ResearchBot for Programming Communities",
+    "venueShort": "BotSE"
+  },
+  {
+    "id": "arrow-vs-mpi-hpec-2025",
+    "type": "publication",
+    "category": "Papers",
+    "title": "Balancing Performance and Productivity: A Comparative Study of Apache Arrow vs. MPI",
+    "year": 2025,
+    "venue": "2025 IEEE High Performance Extreme Computing Conference (HPEC), 1\u20137",
+    "status": "Published",
+    "authors": "R Prabhu, WC Feng",
+    "summary": "Compares Apache Arrow and MPI through the lens of performance, productivity, and data movement in HPC workflows.",
+    "abstract": "This work compares Apache Arrow and MPI as approaches for high-performance data handling, asking how performance and developer productivity trade off in real HPC workflows. It connects data layout, communication, and productivity concerns that matter for exascale scientific computing pipelines.",
+    "areas": [
+      "Data Systems"
+    ],
+    "methods": [
+      "Communication",
+      "Serialization",
+      "Productivity Analysis"
+    ],
+    "systems": [
+      "Apache Arrow",
+      "MPI"
+    ],
+    "keywords": [
+      "Apache Arrow",
+      "MPI",
+      "performance",
+      "productivity",
+      "data movement",
+      "columnar layout",
+      "HPC"
+    ],
+    "links": {},
+    "pdfPath": "",
+    "sortOrder": 2,
+    "shortTitle": "Apache Arrow vs MPI",
+    "venueShort": "HPEC"
+  },
+  {
+    "id": "ct-image-enhancement-trpms-2024",
+    "type": "publication",
+    "category": "Papers",
+    "title": "Improved 2-D Chest CT Image Enhancement with Multi-Level VGG Loss",
+    "year": 2024,
+    "venue": "IEEE Transactions on Radiation and Plasma Medical Sciences 9(3), 304\u2013312",
+    "status": "Published",
+    "authors": "A Chaturvedi, R Prabhu, M Yadav, WC Feng, G Cao",
+    "summary": "Studies multi-level VGG loss for improving 2-D chest CT image enhancement.",
+    "abstract": "This paper studies 2-D chest CT image enhancement using a multi-level VGG loss. It connects medical imaging, deep learning, perceptual loss design, and image-quality evaluation in a scientific ML setting.",
+    "areas": [
+      "Biomedical Imaging"
+    ],
+    "methods": [
+      "VGG Loss",
+      "CT Enhancement",
+      "Deep Learning"
+    ],
+    "systems": [
+      "PyTorch",
+      "Medical Imaging"
+    ],
+    "keywords": [
+      "CT image enhancement",
+      "VGG loss",
+      "medical imaging",
+      "deep learning",
+      "computer vision"
+    ],
+    "links": {},
+    "pdfPath": "",
+    "sortOrder": 3,
+    "shortTitle": "2-D Chest CT Enhancement",
+    "venueShort": "TRPMS"
+  },
+  {
+    "id": "sparkleblast-hpec-2024",
+    "type": "publication",
+    "category": "Papers",
+    "title": "On the Scalability of Computing Genomic Diversity Using SparkLeBLAST: A Feasibility Study",
+    "year": 2024,
+    "venue": "2024 IEEE High Performance Extreme Computing Conference (HPEC), 1\u20138",
+    "status": "Published",
+    "authors": "R Prabhu, B Moussad, K Youssef, E Vatai, W Feng",
+    "summary": "Studies the feasibility and scalability of SparkLeBLAST for genomic diversity analysis on HPC systems.",
+    "abstract": "This paper analyzes SparkLeBLAST as a scalable pipeline for genomic diversity study, identifying performance bottlenecks and feasibility constraints for large-scale execution. The work connects bioinformatics, exascale readiness, in-memory representation, and HPC performance analysis.",
+    "areas": [
+      "Scientific HPC"
+    ],
+    "methods": [
+      "Genomic Diversity",
+      "Scalability Analysis",
+      "Spark-based Analytics"
+    ],
+    "systems": [
+      "SparkLeBLAST",
+      "A64FX",
+      "Fugaku"
+    ],
+    "keywords": [
+      "SparkLeBLAST",
+      "genomics",
+      "bioinformatics",
+      "scalability",
+      "Fugaku",
+      "A64FX",
+      "HPC",
+      "viral evolution"
+    ],
+    "links": {},
+    "pdfPath": "",
+    "sortOrder": 4,
+    "shortTitle": "SparkLeBLAST Scalability",
+    "venueShort": "HPEC"
+  },
+  {
+    "id": "explainable-projections-isvc-2022",
+    "type": "publication",
+    "category": "Papers",
+    "title": "Explainable Interactive Projections for Image Data",
+    "year": 2022,
+    "venue": "International Symposium on Visual Computing, 77\u201390",
+    "status": "Published",
+    "authors": "H Han, R Faust, BFK Norambuena, R Prabhu, T Smith, S Li, C North",
+    "summary": "Builds explainable interactive projection methods for image data exploration.",
+    "abstract": "This paper presents explainable interactive projection techniques for image data. It connects human-in-the-loop visual analytics with feature-space manipulation and interpretable image exploration.",
+    "areas": [
+      "Interactive ML / Visualization"
+    ],
+    "methods": [
+      "Interactive Projection",
+      "Explainable AI",
+      "Visual Analytics"
+    ],
+    "systems": [
+      "Andromeda",
+      "Human-in-the-loop ML"
+    ],
+    "keywords": [
+      "interactive projections",
+      "explainability",
+      "image data",
+      "visual computing",
+      "human-machine interaction"
+    ],
+    "links": {},
+    "pdfPath": "",
+    "sortOrder": 5,
+    "shortTitle": "Explainable Interactive Projections",
+    "venueShort": "ISVC"
+  },
+  {
+    "id": "plant-phenotypes-nappn-2022",
+    "type": "publication",
+    "category": "Papers",
+    "title": "Interactive Deep Learning for Sorting Plant Images by Visual Phenotypes",
+    "year": 2022,
+    "venue": "NAPPN Annual Conference",
+    "status": "Published",
+    "authors": "H Han, R Prabhu, T Smith, K Dhakal, X Wei, S Li, C North",
+    "summary": "Uses interactive deep learning to sort plant images by visual phenotypes.",
+    "abstract": "This work explores interactive deep learning for sorting plant images by visual phenotypes, using human feedback to shape visual similarity and projection behavior. It reflects my early work at the intersection of visualization, machine learning, and image data.",
+    "areas": [
+      "Interactive ML / Visualization"
+    ],
+    "methods": [
+      "Interactive Deep Learning",
+      "Visual Phenotypes",
+      "Image Sorting"
+    ],
+    "systems": [
+      "Andromeda",
+      "Computer Vision"
+    ],
+    "keywords": [
+      "interactive deep learning",
+      "plant phenotypes",
+      "visual analytics",
+      "image sorting",
+      "transfer learning"
+    ],
+    "links": {},
+    "pdfPath": "",
+    "sortOrder": 6,
+    "shortTitle": "Plant Image Phenotype Sorting",
+    "venueShort": "NAPPN"
+  }
+]

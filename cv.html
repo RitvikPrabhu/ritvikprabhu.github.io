@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV · Ritvik Prabhu</title>
+  <meta name="description" content="Curriculum vitae for Ritvik Prabhu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="paper-grain"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Ritvik Prabhu home">RP</a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="cv.html">CV</a>
+    </nav>
+  </header>
+  <main class="page-main">
+    <section class="page-hero panel">
+      <h1>CV</h1>
+      <p>A web version of my CV, with the full PDF available for download.</p>
+      <a class="button primary" href="assets/Prabhu_Ritvik_CV_05312026.pdf">Download PDF CV</a>
+    </section>
+
+    <section class="cv-grid section">
+      <article class="cv-card panel">
+        <h2>Virginia Tech</h2>
+        <ul class="clean-list">
+          <li><strong>PhD in Computer Science</strong> · Expected May 2030</li>
+          <li><strong>MS in Computer Science</strong> · Expected May 2026</li>
+          <li><strong>BS in Computer Science</strong> and <strong>BS in Computational Modeling & Data Analytics</strong> · Minor in Mathematics · May 2023</li>
+        </ul>
+      </article>
+
+      <article class="cv-card panel">
+        <h2>Experience</h2>
+        <div class="timeline compact">
+          <article><span>2025</span><h3>Oak Ridge National Laboratory</h3><p>Student Intern. Built tiled GEMM kernels in CUDA, developed profiling harnesses, and worked on fused GEMM+SiLU/SwiGLU kernels in Triton and CUTLASS.</p></article>
+          <article><span>2024</span><h3>RIKEN Center for Computational Science</h3><p>Student Research Intern. Developed scalable algorithms for multi-hit genetic mutation search targeting full-scale execution on Fugaku.</p></article>
+          <article><span>2022-Present</span><h3>Synergy Lab, Virginia Tech</h3><p>Graduate Research Assistant. Work across HPC, genomic analytics, scalable ML systems, CT image denoising, and edge FFT implementations.</p></article>
+          <article><span>2022</span><h3>Amazon Web Services</h3><p>Software Development Engineer Intern. Built tooling for tracking IoT indexing and backfill progress across databases.</p></article>
+        </div>
+      </article>
+
+      <article class="cv-card panel">
+        <h2>Recognition</h2>
+        <ul class="clean-list">
+          <li>Pratt Fellowship, 2025-26 academic year</li>
+          <li>Outstanding Master’s Student Award nomination</li>
+          <li>Outstanding Student Paper Award, IEEE HPEC 2024</li>
+          <li>Web Chair, IEEE CLUSTER 2026</li>
+          <li>Student Volunteer, IPDPS 2026 and ICPP 2025</li>
+        </ul>
+      </article>
+
+    </section>
+  </main>
+  <footer><p>© <span id="year"></span> Ritvik Prabhu</p></footer>
+  <script src="main.js" type="module"></script>
+</body>
+</html>
