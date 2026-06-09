@@ -29,13 +29,22 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Generate research graph
+      - name: Generate paper graph
         run: npm run build:graph
 
-      - name: Build site
-        run: npm run build
+      - name: Prepare static site
+        run: |
+          rm -rf dist
+          mkdir dist
+          cp index.html dist/
+          cp publications.html dist/
+          cp cv.html dist/
+          cp main.js dist/
+          cp styles.css dist/
+          cp -R assets dist/
+          cp -R data dist/
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v3
