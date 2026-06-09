@@ -100,21 +100,37 @@ html.js #typed-headline {
 .split-heading { display:flex; justify-content:space-between; gap: 24px; align-items:flex-end; padding: 0; }
 .split-heading > p { max-width: 480px; margin: 0; }
 .map-section { margin-top: 42px; padding: clamp(22px, 4vw, 36px); }
-.map-layout { position: relative; min-height: 650px; }
-.graph { min-height: 650px; width: 100%; position:relative; border-radius: 26px; background: rgba(255,250,242,.62); border:1px solid rgba(54,66,86,.1); overflow:hidden; }
-.graph svg { width:100%; height:100%; min-height:650px; display:block; }
+.map-layout { position: relative; min-height: 690px; }
+.graph { min-height: 690px; width: 100%; position:relative; border-radius: 26px; background: rgba(255,250,242,.62); border:1px solid rgba(54,66,86,.1); overflow:hidden; }
+.graph svg { width:100%; height:100%; min-height:690px; display:block; }
 .edge { stroke: rgba(54,66,86,.15); }
-.cluster-region { fill: rgba(255,255,255,.38); stroke: rgba(54,66,86,.12); stroke-dasharray: 7 7; }
-.cluster-distributed-training { fill: rgba(80,135,186,.08); }
-.cluster-second-order-optimization { fill: rgba(139,99,54,.08); }
-.cluster-gpu-systems { fill: rgba(95,140,118,.09); }
-.cluster-scientific-hpc { fill: rgba(156,114,154,.08); }
-.cluster-label { fill: rgba(48,56,70,.52); font-size: 15px; font-weight: 800; letter-spacing: -.02em; }
+.cluster-region {
+  fill: rgba(255, 255, 255, 0.24);
+  stroke: rgba(54, 66, 86, 0.09);
+  stroke-dasharray: 7 7;
+  pointer-events: none;
+}
+.cluster-label {
+  fill: rgba(48, 56, 70, 0.45);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  pointer-events: none;
+}
+.cluster-label-bg {
+  display: none;
+}
+.cluster-scientific-hpc { fill: rgba(80, 135, 186, 0.055); }
+.cluster-data-systems { fill: rgba(95, 140, 118, 0.055); }
+.cluster-biomedical-imaging { fill: rgba(236, 161, 79, 0.055); }
+.cluster-interactive-visualization { fill: rgba(139, 99, 54, 0.05); }
+.cluster-interactive-ml-visualization { fill: rgba(139, 99, 54, 0.05); }
+.cluster-research-tools { fill: rgba(156, 114, 154, 0.055); }
 .node { cursor:pointer; }
 .node circle { stroke: rgba(31,39,51,.28); stroke-width:1.2; transition: .18s ease; filter: drop-shadow(0 8px 14px rgba(54,66,86,.10)); }
 .node:hover circle { transform: scale(1.08); stroke-width:2; }
 .major-label { font: 800 14px Inter, sans-serif; fill: #303846; paint-order: stroke; stroke: rgba(255,250,242,.9); stroke-width: 4px; }
-.artifact-label { font: 800 12px "JetBrains Mono", monospace; fill: #1f2733; }
+.artifact-label { font: 800 12px Inter, system-ui, sans-serif; fill: #1f2733; letter-spacing: -0.02em; }
 .graph-legend { position:absolute; left:18px; bottom:18px; display:flex; flex-wrap:wrap; gap:8px; background:rgba(255,255,255,.78); border:1px solid var(--line); border-radius:999px; padding:8px 10px; color:var(--muted); font-size:12px; }
 .graph-legend b { color:var(--text); }
 .node-detail { display:none; position:absolute; right:18px; top:18px; width:min(430px, calc(100% - 36px)); max-height: calc(100% - 36px); overflow:auto; padding:22px; border-radius:24px; background:rgba(255,255,255,.95); border:1px solid var(--line); box-shadow:0 24px 80px rgba(54,66,86,.18); z-index:5; }
@@ -403,10 +419,6 @@ html.home-snap {
   font-size: 17px;
   max-width: 430px;
 }
-.cluster-region,
-.cluster-label {
-  display: none;
-}
 .graph {
   background: rgba(255,250,242,.78);
 }
@@ -417,4 +429,94 @@ html.home-snap {
   .pub-actions {
     align-items: flex-start;
   }
+}
+
+.detail-abstract { font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+/* v17: scalable paper map — clusters are labels, papers are unlabeled interactive markers */
+.map-layout { position: relative; }
+.cluster-region {
+  pointer-events: auto;
+  cursor: pointer;
+  transition: fill .18s ease, stroke .18s ease, stroke-width .18s ease;
+}
+.cluster-region:hover,
+.cluster-region:focus {
+  fill-opacity: 0.12;
+  stroke: rgba(49, 93, 140, 0.22);
+  stroke-width: 1.6px;
+}
+.cluster-label {
+  font-size: 14px;
+  font-weight: 850;
+  fill: rgba(32, 39, 52, 0.52);
+  pointer-events: none;
+}
+.node-marker { cursor: pointer; }
+.paper-dot {
+  transition: transform .18s ease, filter .18s ease, stroke-width .18s ease;
+  filter: drop-shadow(0 8px 14px rgba(54,66,86,.14));
+}
+.node-marker:hover .paper-dot,
+.node-marker:focus .paper-dot {
+  transform: scale(1.28);
+  filter: drop-shadow(0 12px 20px rgba(54,66,86,.22));
+  stroke-width: 2.4px;
+}
+.graph-legend { gap: 12px; }
+.legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  margin-right: 5px;
+  border-radius: 50%;
+  vertical-align: -1px;
+}
+.legend-dot.published { background: #6eb083; }
+.legend-dot.to-appear { background: #e7a347; }
+.detail-kicker {
+  margin: 0 0 10px;
+  color: var(--accent2);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.cluster-summary { margin-top: 6px; }
+.cluster-paper-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.cluster-paper {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: rgba(255,250,242,.7);
+  border-radius: 16px;
+  padding: 13px 14px;
+  cursor: pointer;
+  color: var(--text);
+  transition: transform .16s ease, border-color .16s ease, background .16s ease;
+}
+.cluster-paper:hover,
+.cluster-paper:focus {
+  transform: translateY(-1px);
+  border-color: rgba(49, 93, 140, .25);
+  background: rgba(255,255,255,.9);
+}
+.cluster-paper span {
+  display: block;
+  font-weight: 750;
+  line-height: 1.25;
+}
+.cluster-paper small {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+@media (max-width: 760px) {
+  .cluster-label { font-size: 12px; }
+  .node-detail { left: 14px; right: 14px; top: 14px; width: auto; }
 }

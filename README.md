@@ -261,3 +261,33 @@ data/research-graph.json
 assets/papers/*
 ```
 
+
+
+## Excerpts / abstracts
+
+Do not add a short excerpt from the title alone. Add `abstract` text only after reading the paper PDF, especially the abstract, introduction, contribution paragraph, and conclusion. Then set:
+
+```json
+"abstract": "Carefully written excerpt based on the paper.",
+"abstractReviewed": true
+```
+
+If `abstractReviewed` is not `true`, the website will not show an excerpt in the graph detail panel.
+
+
+## Graph label guidance
+
+Graph nodes use the `shortTitle` field from `data/artifacts.json` / `data/publications.json`. Keep this label short enough to fit cleanly in the map, but still faithful to the paper. Good examples: `Mutation Search`, `SparkLeBLAST`, `CT Enhancement`, `Arrow / MPI`, `Interactive Projections`. Avoid long full-title fragments or vague nicknames. The full title, venue, authors, and excerpt appear after the node is clicked.
+
+## v17 paper map interaction model
+
+The homepage paper map is designed to scale beyond a small number of publications.
+
+- Cluster labels describe topical areas.
+- Individual publications are shown as unlabeled markers.
+- Hovering over a marker shows the full paper title through the browser tooltip.
+- Clicking a marker opens the publication detail panel with authors, venue, reviewed excerpt, and links.
+- Clicking a cluster opens a list of publications in that cluster.
+- The graph should not show every paper title by default; that becomes unreadable once the publication list grows.
+
+When adding a new publication, set its `areas` field carefully because that controls which cluster it appears in.

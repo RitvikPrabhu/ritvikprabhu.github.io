@@ -8,8 +8,8 @@
     "venue": "IEEE International Parallel & Distributed Processing Symposium (IPDPS)",
     "status": "To appear",
     "authors": "R Prabhu, E Vatai, B Moussad, E Jeannot, R Anandakrishnan, W Feng, M Wahib",
-    "summary": "Scales sparsity-driven search for identifying correlated genetic mutations in cancer.",
-    "abstract": "This work studies how to identify correlated genetic mutation combinations in cancer by scaling sparsity-driven search over an irregular, combinatorial space. The systems focus is on hierarchical MPI work stealing, load balance, and full-scale HPC execution for scientific discovery.",
+    "summary": "Uses sparsity-driven pruned depth-first search to make multi-hit cancer mutation search feasible at large scale.",
+    "abstract": "Uses sparsity-driven pruned depth-first search to make multi-hit cancer mutation search feasible at large scale.",
     "areas": [
       "Scientific HPC"
     ],
@@ -39,8 +39,9 @@
     },
     "pdfPath": "assets/papers/genomic-needles-ipdps-2026.pdf",
     "sortOrder": 0,
-    "shortTitle": "Correlated Mutation Search",
-    "venueShort": "IPDPS"
+    "shortTitle": "Mutation Search",
+    "venueShort": "IPDPS",
+    "abstractReviewed": true
   },
   {
     "id": "researchbot-botse-2025",
@@ -51,8 +52,8 @@
     "venue": "IEEE/ACM International Workshop on Bots in Software Engineering (BotSE)",
     "status": "Published",
     "authors": "S Farzanepour, S Rajeev, H Liang, R Prabhu, C Brown",
-    "summary": "Explores how software bots can connect academic research with practical programming communities.",
-    "abstract": "This paper studies ResearchBot, a software-engineering bot aimed at bridging academic research and practical programming communities. It sits outside my main HPC thread but reflects an interest in systems that make research more usable by practitioners.",
+    "summary": "Builds a modular bot that retrieves and summarizes academic papers to answer practical software-engineering questions.",
+    "abstract": "Builds a modular bot that retrieves and summarizes academic papers to answer practical software-engineering questions.",
     "areas": [
       "Research Tools"
     ],
@@ -73,8 +74,9 @@
     "links": {},
     "pdfPath": "",
     "sortOrder": 1,
-    "shortTitle": "ResearchBot for Programming Communities",
-    "venueShort": "BotSE"
+    "shortTitle": "ResearchBot",
+    "venueShort": "BotSE",
+    "abstractReviewed": true
   },
   {
     "id": "arrow-vs-mpi-hpec-2025",
@@ -85,8 +87,8 @@
     "venue": "2025 IEEE High Performance Extreme Computing Conference (HPEC), 1\u20137",
     "status": "Published",
     "authors": "R Prabhu, WC Feng",
-    "summary": "Compares Apache Arrow and MPI through the lens of performance, productivity, and data movement in HPC workflows.",
-    "abstract": "This work compares Apache Arrow and MPI as approaches for high-performance data handling, asking how performance and developer productivity trade off in real HPC workflows. It connects data layout, communication, and productivity concerns that matter for exascale scientific computing pipelines.",
+    "summary": "Compares MPI/C, MPI/Python, and Python-based Apache Arrow implementations to study performance, scalability, and developer productivity tradeoffs.",
+    "abstract": "Compares MPI/C, MPI/Python, and Python-based Apache Arrow implementations to study performance, scalability, and developer productivity tradeoffs.",
     "areas": [
       "Data Systems"
     ],
@@ -111,8 +113,9 @@
     "links": {},
     "pdfPath": "",
     "sortOrder": 2,
-    "shortTitle": "Apache Arrow vs MPI",
-    "venueShort": "HPEC"
+    "shortTitle": "Arrow / MPI",
+    "venueShort": "HPEC",
+    "abstractReviewed": true
   },
   {
     "id": "ct-image-enhancement-trpms-2024",
@@ -123,8 +126,8 @@
     "venue": "IEEE Transactions on Radiation and Plasma Medical Sciences 9(3), 304\u2013312",
     "status": "Published",
     "authors": "A Chaturvedi, R Prabhu, M Yadav, WC Feng, G Cao",
-    "summary": "Studies multi-level VGG loss for improving 2-D chest CT image enhancement.",
-    "abstract": "This paper studies 2-D chest CT image enhancement using a multi-level VGG loss. It connects medical imaging, deep learning, perceptual loss design, and image-quality evaluation in a scientific ML setting.",
+    "summary": "Uses multi-level VGG loss to improve low-dose chest CT image enhancement for clearer diagnostic images.",
+    "abstract": "Uses multi-level VGG loss to improve low-dose chest CT image enhancement for clearer diagnostic images.",
     "areas": [
       "Biomedical Imaging"
     ],
@@ -147,8 +150,9 @@
     "links": {},
     "pdfPath": "",
     "sortOrder": 3,
-    "shortTitle": "2-D Chest CT Enhancement",
-    "venueShort": "TRPMS"
+    "shortTitle": "CT Enhancement",
+    "venueShort": "TRPMS",
+    "abstractReviewed": true
   },
   {
     "id": "sparkleblast-hpec-2024",
@@ -159,8 +163,8 @@
     "venue": "2024 IEEE High Performance Extreme Computing Conference (HPEC), 1\u20138",
     "status": "Published",
     "authors": "R Prabhu, B Moussad, K Youssef, E Vatai, W Feng",
-    "summary": "Studies the feasibility and scalability of SparkLeBLAST for genomic diversity analysis on HPC systems.",
-    "abstract": "This paper analyzes SparkLeBLAST as a scalable pipeline for genomic diversity study, identifying performance bottlenecks and feasibility constraints for large-scale execution. The work connects bioinformatics, exascale readiness, in-memory representation, and HPC performance analysis.",
+    "summary": "Models and evaluates SparkLeBLAST scalability for COVID-19 genomic diversity analysis on Fugaku-scale systems.",
+    "abstract": "Models and evaluates SparkLeBLAST scalability for COVID-19 genomic diversity analysis on Fugaku-scale systems.",
     "areas": [
       "Scientific HPC"
     ],
@@ -187,8 +191,9 @@
     "links": {},
     "pdfPath": "",
     "sortOrder": 4,
-    "shortTitle": "SparkLeBLAST Scalability",
-    "venueShort": "HPEC"
+    "shortTitle": "SparkLeBLAST",
+    "venueShort": "HPEC",
+    "abstractReviewed": true
   },
   {
     "id": "explainable-projections-isvc-2022",
@@ -199,8 +204,8 @@
     "venue": "International Symposium on Visual Computing, 77\u201390",
     "status": "Published",
     "authors": "H Han, R Faust, BFK Norambuena, R Prabhu, T Smith, S Li, C North",
-    "summary": "Builds explainable interactive projection methods for image data exploration.",
-    "abstract": "This paper presents explainable interactive projection techniques for image data. It connects human-in-the-loop visual analytics with feature-space manipulation and interpretable image exploration.",
+    "summary": "Combines interactive dimensionality reduction with visual explanations so users can reshape and understand image projections.",
+    "abstract": "Combines interactive dimensionality reduction with visual explanations so users can reshape and understand image projections.",
     "areas": [
       "Interactive ML / Visualization"
     ],
@@ -223,8 +228,9 @@
     "links": {},
     "pdfPath": "",
     "sortOrder": 5,
-    "shortTitle": "Explainable Interactive Projections",
-    "venueShort": "ISVC"
+    "shortTitle": "Interactive Projections",
+    "venueShort": "ISVC",
+    "abstractReviewed": true
   },
   {
     "id": "plant-phenotypes-nappn-2022",
@@ -235,8 +241,8 @@
     "venue": "NAPPN Annual Conference",
     "status": "Published",
     "authors": "H Han, R Prabhu, T Smith, K Dhakal, X Wei, S Li, C North",
-    "summary": "Uses interactive deep learning to sort plant images by visual phenotypes.",
-    "abstract": "This work explores interactive deep learning for sorting plant images by visual phenotypes, using human feedback to shape visual similarity and projection behavior. It reflects my early work at the intersection of visualization, machine learning, and image data.",
+    "summary": "Uses Andromeda to let domain experts sort plant images by visual phenotype through interactive deep learning.",
+    "abstract": "Uses Andromeda to let domain experts sort plant images by visual phenotype through interactive deep learning.",
     "areas": [
       "Interactive ML / Visualization"
     ],
@@ -259,7 +265,8 @@
     "links": {},
     "pdfPath": "",
     "sortOrder": 6,
-    "shortTitle": "Plant Image Phenotype Sorting",
-    "venueShort": "NAPPN"
+    "shortTitle": "Plant Phenotypes",
+    "venueShort": "NAPPN",
+    "abstractReviewed": true
   }
 ]
