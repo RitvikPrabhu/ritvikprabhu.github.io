@@ -161,30 +161,42 @@ function renderFullPublications(artifacts) {
   if (!host) return;
   const categories = [
     {
+      id: "conference-papers",
       label: "Conference Papers",
       test: isConferencePublication
     },
     {
+      id: "journal-papers",
       label: "Journal Papers",
       test: isJournalPublication
     },
     {
+      id: "workshop-papers",
       label: "Workshop Papers",
       test: item => item.category === "Workshop Papers"
     },
     {
+      id: "preprints",
       label: "Preprints",
       test: item => item.category === "Preprints"
     }
   ];
   const pubs = artifacts.filter(item => item.type === "publication").sort(sortArtifacts);
-  host.innerHTML = categories.map(category => {
-    const items = pubs.filter(category.test);
-    if (!items.length) return "";
+  const visibleCategories = categories
+    .map(category => ({ ...category, items: pubs.filter(category.test) }))
+    .filter(category => category.items.length);
+  const jumpNav = document.querySelector("#publication-jump-nav");
+  if (jumpNav) {
+    jumpNav.innerHTML = visibleCategories
+      .map(category => `<a href="#${category.id}">${escapeHTML(category.label)}</a>`)
+      .join("");
+    jumpNav.hidden = visibleCategories.length < 2;
+  }
+  host.innerHTML = visibleCategories.map(category => {
     return `
-      <section class="publication-category">
+      <section class="publication-category" id="${category.id}">
         <h2>${escapeHTML(category.label)}</h2>
-        <div class="publication-list">${items.map(publicationCard).join("")}</div>
+        <div class="publication-list">${category.items.map(publicationCard).join("")}</div>
       </section>
     `;
   }).join("");

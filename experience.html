@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience - Ritvik Prabhu</title>
+  <meta name="description" content="Research and work experience for Ritvik Prabhu." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="paper-grain"></div>
+  <header class="site-header">
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Home</a>
+      <a href="#">Bio</a>
+      <a href="publications.html">Publications</a>
+      <a href="experience.html" aria-current="page">Experience</a>
+      <a href="#">Service</a>
+      <!-- <a href="#">Awards</a> -->
+    </nav>
+  </header>
+
+  <main class="page-main experience-page">
+    <section class="page-hero experience-hero">
+      <h1>Experience</h1>
+      <div class="section-jump">
+        <span>Jump to</span>
+        <nav class="section-jump-nav" aria-label="Experience sections">
+          <a href="#research-labs">Research Labs</a>
+          <a href="#internships">Internships</a>
+        </nav>
+      </div>
+    </section>
+
+    <section class="section experience-index" aria-label="Research labs and internships">
+      <section class="experience-category" id="research-labs">
+        <h2>Research Labs</h2>
+
+        <article class="experience-item">
+          <div class="experience-main">
+            <h3>Synergy Lab, Virginia Tech</h3>
+            <p class="experience-role">Graduate Research Assistant</p>
+            <p class="experience-location">Blacksburg, Virginia</p>
+            <p class="experience-summary">High-performance systems for scalable genomic analysis, medical imaging, and edge computing.</p>
+            <ul>
+              <li>Studied SparkLeBLAST scalability on A64FX systems and worked with RIKEN collaborators on data layout, vectorization, and format-conversion bottlenecks.</li>
+              <li>Explored Apache Arrow and Arrow Flight for genomic analysis pipelines; contributed to low-dose chest CT enhancement work using 3D-DDNet and VGG-based models.</li>
+            </ul>
+          </div>
+          <time>Mar 2022 - Present</time>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-main">
+            <h3>InfoVis Lab, Virginia Tech</h3>
+            <p class="experience-role">Undergraduate Research Assistant</p>
+            <p class="experience-location">Blacksburg, Virginia</p>
+            <p class="experience-summary">Interactive visual analytics for image sorting and human-in-the-loop machine learning.</p>
+            <ul>
+              <li>Worked on Andromeda features for exploratory sorting of edamame seed images.</li>
+              <li>Built tools for clustering images using domain feedback, pretrained image projections, and tuned feature-space distance weights.</li>
+            </ul>
+          </div>
+          <time>May 2021 - May 2022</time>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-main">
+            <h3><a href="https://crawford.chem.vt.edu/" target="_blank" rel="noopener">Crawford Lab, Virginia Tech</a></h3>
+            <p class="experience-role">Undergraduate Research Assistant</p>
+            <p class="experience-location">Blacksburg, Virginia</p>
+            <p class="experience-summary">Numerical methods and machine learning for real-time coupled-cluster calculations.</p>
+            <ul>
+              <li>Worked on localized orbital spaces, mixed-precision arithmetic, GPU utilization, and machine learning for real-time coupled-cluster calculations.</li>
+              <li>Used the Pade approximant method to reduce simulation time for accurate results from about 2000 atomic units to about 200; developed signal-analysis and LSTM forecasting routines.</li>
+            </ul>
+          </div>
+          <time>Jan 2020 - May 2022</time>
+        </article>
+      </section>
+
+      <section class="experience-category" id="internships">
+        <h2>Internships</h2>
+
+        <article class="experience-item">
+          <div class="experience-main">
+            <h3>Oak Ridge National Laboratory</h3>
+            <p class="experience-role">Student Intern</p>
+            <p class="experience-location">Oak Ridge, Tennessee</p>
+            <p class="experience-summary">GPU kernel optimization for fused matrix operations on modern Nvidia architectures.</p>
+            <ul>
+              <li>Built tiled GEMM kernels in CUDA and a profiling harness for GPU memory hierarchy, occupancy, and warp scheduling experiments.</li>
+              <li>Used Triton to implement and tune fused GEMM+SiLU kernels, reaching roughly 1.2-1.35x single-precision speedups over a PyTorch baseline on Ampere and Hopper GPUs.</li>
+              <li>Prototyped a full SwiGLU fusion in CUTLASS with a Python-callable C++ kernel interface.</li>
+            </ul>
+          </div>
+          <time>May 2025 - Aug 2025</time>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-main">
+            <h3>RIKEN Center for Computational Science</h3>
+            <p class="experience-role">Student Research Intern</p>
+            <p class="experience-location">Tokyo, Japan</p>
+            <p class="experience-summary">Scalable search algorithms for identifying cancer-associated mutation combinations.</p>
+            <ul>
+              <li>Worked on algorithms for identifying multi-hit genetic mutation combinations associated with specific cancer types.</li>
+              <li>Implemented a sparsity-aware weighted set-cover approach to reduce the mutation-combination search space and prepare for large runs on Fugaku.</li>
+            </ul>
+          </div>
+          <time>Oct 2024 - Dec 2024</time>
+        </article>
+
+        <article class="experience-item">
+          <div class="experience-main">
+            <h3>Amazon Web Services</h3>
+            <p class="experience-role">Software Development Engineer Intern</p>
+            <p class="experience-location">Boston, Massachusetts</p>
+            <p class="experience-summary">Backend infrastructure for IoT indexing, progress tracking, and operational reporting.</p>
+            <ul>
+              <li>Worked on indexing and querying workflows for millions of IoT devices across multiple databases.</li>
+              <li>Built a tracking feature for indexing progress, wrote status data into Elasticsearch, and used AWS CloudWatch for backfill metrics.</li>
+            </ul>
+          </div>
+          <time>May 2022 - Aug 2022</time>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="main.js" type="module"></script>
+</body>
+</html>
