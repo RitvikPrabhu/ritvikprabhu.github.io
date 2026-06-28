@@ -31,9 +31,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Generate paper graph
-        run: npm run build:graph
-
       - name: Prepare static site
         run: |
           rm -rf dist
