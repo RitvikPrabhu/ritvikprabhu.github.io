@@ -17,7 +17,7 @@
     <nav aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="publications.html">Publications</a>
-      <a href="cv.html">CV</a>
+      <!-- <a href="cv.html">CV</a> -->
     </nav>
   </header>
 
@@ -25,27 +25,36 @@
     <section id="home" class="hero-shell snap-section">
       <div class="hero-text reveal-stack">
         <h1 class="typewriter" aria-label="Hi, I’m Ritvik."><span id="typed-headline" data-text="Hi, I’m Ritvik.">Hi, I’m Ritvik.</span><span class="cursor" aria-hidden="true"></span></h1>
-        <p class="lead reveal-item delay-2">I work on high-performance systems for scalable machine learning, especially distributed training, optimization, and GPU-aware algorithms.</p>
-        <p class="intro reveal-item delay-3">I’m interested in why promising machine-learning methods often fail to become practical at scale — and what systems work is needed to fix that.</p>
+        <p class="lead reveal-item delay-2">I’m a PhD student in Computer Science at Virginia Tech working on high-performance systems for scalable machine learning.</p>
+        <!-- <p class="intro reveal-item delay-3">I’m interested in why promising machine-learning methods often fail to become practical at scale — and what systems work is needed to fix that.</p> -->
         <div class="social-row reveal-item delay-4" aria-label="Contact and profile links">
-          <a href="mailto:ritvik@ritvikprabhu.com" aria-label="Email Ritvik" title="Email">
+          <a href="#email" data-email-link aria-label="Email Ritvik" title="Email" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.75A2.75 2.75 0 0 1 6.75 4h10.5A2.75 2.75 0 0 1 20 6.75v10.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25V6.75Zm2.2-.2 5.25 4.33c.32.27.78.27 1.1 0L17.8 6.55a1.23 1.23 0 0 0-.55-.13H6.75c-.19 0-.38.04-.55.13Zm12.05 1.49-4.75 3.92a2.35 2.35 0 0 1-3 0L5.75 8.04v9.21c0 .55.45 1 1 1h10.5c.55 0 1-.45 1-1V8.04Z"/></svg>
           </a>
-          <a href="https://github.com/RitvikPrabhu" aria-label="GitHub" title="GitHub">
+          <a href="https://github.com/RitvikPrabhu" aria-label="GitHub" title="GitHub" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.7c-5.2 0-9.4 4.2-9.4 9.4 0 4.14 2.69 7.66 6.42 8.9.47.08.64-.2.64-.45v-1.6c-2.61.57-3.16-1.12-3.16-1.12-.43-1.08-1.04-1.37-1.04-1.37-.85-.58.06-.57.06-.57.94.07 1.44.97 1.44.97.84 1.43 2.2 1.02 2.73.78.09-.61.33-1.02.6-1.25-2.09-.24-4.28-1.04-4.28-4.65 0-1.03.37-1.87.97-2.53-.1-.24-.42-1.2.09-2.49 0 0 .79-.25 2.58.97a8.88 8.88 0 0 1 4.7 0c1.79-1.22 2.58-.97 2.58-.97.51 1.29.19 2.25.09 2.49.6.66.97 1.5.97 2.53 0 3.62-2.2 4.41-4.3 4.64.34.3.64.88.64 1.78v2.63c0 .25.17.54.65.45a9.4 9.4 0 0 0 6.41-8.9c0-5.2-4.2-9.4-9.4-9.4Z"/></svg>
           </a>
-          <a href="https://scholar.google.com/citations?user=2upuXaQAAAAJ&hl=en" aria-label="Google Scholar" title="Google Scholar">
+          <a href="https://scholar.google.com/citations?user=2upuXaQAAAAJ&hl=en" aria-label="Google Scholar" title="Google Scholar" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true" class="scholar-icon"><path d="M12 3 2.7 10.2 12 17.4l9.3-7.2L12 3Z"/><path d="M6.45 12.95v3.16c0 2.1 2.49 3.8 5.55 3.8s5.55-1.7 5.55-3.8v-3.16L12 17.25l-5.55-4.3Z"/><circle cx="12" cy="10.15" r="2.35" fill="var(--bg2)"/></svg>
           </a>
-          <a href="#" aria-label="LinkedIn" title="LinkedIn">
+          <a href="https://www.linkedin.com/in/ritvikprabhu/" aria-label="LinkedIn" title="LinkedIn" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.42 8.9H3.75v10.35h2.67V8.9ZM5.08 4.75a1.55 1.55 0 1 0 0 3.1 1.55 1.55 0 0 0 0-3.1Zm5.55 4.15H8.07v10.35h2.56v-5.58c0-1.47.69-2.35 1.86-2.35 1.08 0 1.6.76 1.6 2.35v5.58h2.67v-6.02c0-3.04-1.62-4.46-3.79-4.46-1.74 0-2.52.96-2.95 1.63h-.04V8.9Z"/></svg>
           </a>
         </div>
       </div>
 
-      <aside class="portrait-panel reveal-photo" aria-label="Portrait placeholder">
-        <div class="portrait-photo">Add<br/>photo</div>
+      <aside class="portrait-panel reveal-photo" aria-label="Portrait of Ritvik Prabhu">
+        <div class="portrait-photo">
+          <img src="assets/photo/potrait.jpg" alt="Ritvik Prabhu" />
+        </div>
       </aside>
+    </section>
+
+    <section id="news" class="section news-home snap-section">
+      <div class="section-heading news-heading">
+        <h2>News and Highlights</h2>
+      </div>
+      <div id="news-list" class="news-list" data-limit="3"></div>
     </section>
 
     <section id="publications" class="section publications-home snap-section">
@@ -54,10 +63,11 @@
         <a class="button ghost" href="publications.html">View all publications</a>
       </div>
       <div id="publication-list" class="publication-list" data-limit="3"></div>
+        
     </section>
 
 
-    <section id="map" class="map-section panel snap-section">
+    <!-- <section id="map" class="map-section panel snap-section">
       <div class="section-heading split-heading">
         <h2>Paper map</h2>
         <p>A functional map of my published work. Click a cluster to browse papers, or click a dot to open the paper details.</p>
@@ -66,13 +76,12 @@
         <div id="graph" class="graph" role="img" aria-label="Interactive research graph"></div>
         <aside id="node-detail" class="node-detail" aria-live="polite"></aside>
       </div>
-    </section>
+    </section> -->
 
-  </main>
-
-  <footer>
-    <p>© <span id="year"></span> Ritvik Prabhu</p>
-  </footer>
+  <!-- </main> -->
+   <!-- <footer>
+          <p>© <span id="year"></span> Ritvik Prabhu</p>
+        </footer> -->
 
   <script src="main.js" type="module"></script>
 </body>

@@ -2,6 +2,7 @@ document.documentElement.classList.add("js");
 
 const graphPromise = fetch("data/research-graph.json").then(r => r.json()).catch(() => null);
 const artifactsPromise = fetch("data/artifacts.json").then(r => r.json()).catch(() => []);
+const newsPromise = fetch("data/news.json").then(r => r.json()).catch(() => []);
 
 let currentGraph = null;
 let currentArtifacts = [];
@@ -39,6 +40,19 @@ function typeHeadline() {
 
 document.querySelectorAll("#year").forEach(el => el.textContent = new Date().getFullYear());
 typeHeadline();
+
+function setupEmailLink() {
+  const link = document.querySelector("[data-email-link]");
+  if (!link) return;
+  const user = ["rit", "vik"].join("");
+  const host = ["ritvikprabhu", "com"].join(".");
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    window.open(`mailto:${user}@${host}`, "_blank", "noopener");
+  });
+}
+
+setupEmailLink();
 
 function escapeHTML(value = "") {
   return String(value).replace(/[&<>"]/g, ch => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", "\"":"&quot;"}[ch]));
@@ -102,6 +116,26 @@ function publicationCard(item) {
       </div>
     </article>
   `;
+}
+
+function newsCard(item) {
+  const link = item.link
+    ? `<a class="news-link" href="${escapeHTML(item.link)}" target="_blank" rel="noopener">More</a>`
+    : "";
+  return `
+    <article class="news-item">
+      <time class="news-date">${escapeHTML(item.date || "")}</time>
+      <h3>${escapeHTML(item.title || "")}</h3>
+      ${link}
+    </article>
+  `;
+}
+
+function renderRecentNews(news) {
+  const list = document.querySelector("#news-list");
+  if (!list) return;
+  const items = news.slice(0, Number(list.dataset.limit || 3));
+  list.innerHTML = items.length ? items.map(newsCard).join("") : `<p>No news entries yet.</p>`;
 }
 
 function renderRecentPublications(artifacts) {
@@ -465,9 +499,10 @@ function renderGraph(graph) {
   host.replaceChildren(svg, legend);
 }
 
-Promise.all([graphPromise, artifactsPromise]).then(([graph, artifacts]) => {
+Promise.all([graphPromise, artifactsPromise, newsPromise]).then(([graph, artifacts, news]) => {
   currentGraph = graph;
   currentArtifacts = artifacts;
+  renderRecentNews(news);
   renderRecentPublications(artifacts);
   renderFullPublications(artifacts);
   renderGraph(graph);
