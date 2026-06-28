@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="home-snap">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,21 +13,23 @@
 <body>
   <div class="paper-grain"></div>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Ritvik Prabhu home">RP</a>
     <nav aria-label="Primary navigation">
-      <a href="index.html">Home</a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="#">Bio</a>
       <a href="publications.html">Publications</a>
-      <!-- <a href="cv.html">CV</a> -->
+      <a href="#">Experience</a>
+      <a href="#">Service</a>
+      <!-- <a href="#">Awards</a> -->
     </nav>
   </header>
 
-  <main class="snap-main">
-    <section id="home" class="hero-shell snap-section">
+  <main class="home-main">
+    <section id="home" class="hero-shell home-hero">
       <div class="hero-text reveal-stack">
         <h1 class="typewriter" aria-label="Hi, I’m Ritvik."><span id="typed-headline" data-text="Hi, I’m Ritvik.">Hi, I’m Ritvik.</span><span class="cursor" aria-hidden="true"></span></h1>
-        <p class="lead reveal-item delay-2">I’m a PhD student in Computer Science at Virginia Tech working on high-performance systems for scalable machine learning.</p>
+        <p class="lead reveal-item">I’m a Computer Science PhD student at Virginia Tech working on high-performance computing systems for scalable scientific and machine-learning applications.</p>
         <!-- <p class="intro reveal-item delay-3">I’m interested in why promising machine-learning methods often fail to become practical at scale — and what systems work is needed to fix that.</p> -->
-        <div class="social-row reveal-item delay-4" aria-label="Contact and profile links">
+        <div class="social-row reveal-item" aria-label="Contact and profile links">
           <a href="#email" data-email-link aria-label="Email Ritvik" title="Email" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.75A2.75 2.75 0 0 1 6.75 4h10.5A2.75 2.75 0 0 1 20 6.75v10.5A2.75 2.75 0 0 1 17.25 20H6.75A2.75 2.75 0 0 1 4 17.25V6.75Zm2.2-.2 5.25 4.33c.32.27.78.27 1.1 0L17.8 6.55a1.23 1.23 0 0 0-.55-.13H6.75c-.19 0-.38.04-.55.13Zm12.05 1.49-4.75 3.92a2.35 2.35 0 0 1-3 0L5.75 8.04v9.21c0 .55.45 1 1 1h10.5c.55 0 1-.45 1-1V8.04Z"/></svg>
           </a>
@@ -50,38 +52,24 @@
       </aside>
     </section>
 
-    <section id="news" class="section news-home snap-section">
-      <div class="section-heading news-heading">
-        <h2>News and Highlights</h2>
-      </div>
-      <div id="news-list" class="news-list" data-limit="3"></div>
+    <section class="section home-activity reveal-item" aria-label="News and recent publications">
+      <section id="news" class="activity-block news-home">
+        <div class="section-heading news-heading">
+          <h2>News and Highlights</h2>
+        </div>
+        <div id="news-list" class="news-list" data-limit="3"></div>
+      </section>
+
+      <section id="publications" class="activity-block publications-home reveal-item">
+        <div class="section-heading publications-heading">
+          <h2>Recent publications</h2>
+          <a class="button ghost" href="publications.html">View all publications</a>
+        </div>
+        <div id="publication-list" class="publication-list" data-limit="3"></div>
+      </section>
     </section>
 
-    <section id="publications" class="section publications-home snap-section">
-      <div class="section-heading publications-heading">
-        <h2>Recent publications</h2>
-        <a class="button ghost" href="publications.html">View all publications</a>
-      </div>
-      <div id="publication-list" class="publication-list" data-limit="3"></div>
-        
-    </section>
-
-
-    <!-- <section id="map" class="map-section panel snap-section">
-      <div class="section-heading split-heading">
-        <h2>Paper map</h2>
-        <p>A functional map of my published work. Click a cluster to browse papers, or click a dot to open the paper details.</p>
-      </div>
-      <div class="map-layout">
-        <div id="graph" class="graph" role="img" aria-label="Interactive research graph"></div>
-        <aside id="node-detail" class="node-detail" aria-live="polite"></aside>
-      </div>
-    </section> -->
-
-  <!-- </main> -->
-   <!-- <footer>
-          <p>© <span id="year"></span> Ritvik Prabhu</p>
-        </footer> -->
+  </main>
 
   <script src="main.js" type="module"></script>
 </body>

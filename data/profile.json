@@ -1,14 +1,4 @@
 {
-  "name": "Ritvik Prabhu",
-  "title": "PhD Student in Computer Science",
-  "institution": "Virginia Tech",
-  "lab": "Synergy Lab",
-  "tagline": "High-performance systems for scalable machine learning.",
-  "hero": {
-    "headline": "Hi, I\u2019m Ritvik.",
-    "body": "I\u2019m a PhD student in Computer Science at Virginia Tech. I work on high-performance systems for scalable machine learning, especially distributed training, optimization, and GPU-aware algorithms.",
-    "body2": "I\u2019m interested in why promising machine-learning methods often fail to become practical at scale \u2014 and what systems work is needed to fix that."
-  },
   "contact": {
     "email": "ritvik [at] ritvikprabhu [dot] com",
     "github": "https://github.com/RitvikPrabhu",

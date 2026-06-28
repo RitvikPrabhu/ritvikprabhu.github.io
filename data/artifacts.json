@@ -34,10 +34,8 @@
       "load balance"
     ],
     "links": {
-      "arxiv": "https://arxiv.org/abs/2603.16721",
-      "pdf": "https://arxiv.org/pdf/2603.16721"
+      "arxiv": "https://arxiv.org/abs/2603.16721"
     },
-    "pdfPath": "assets/papers/genomic-needles-ipdps-2026.pdf",
     "sortOrder": 0,
     "shortTitle": "Mutation Search",
     "venueShort": "IPDPS",
@@ -71,7 +69,9 @@
       "research translation",
       "programming communities"
     ],
-    "links": {},
+    "links": {
+      "IEEE Xplore": "https://ieeexplore.ieee.org/document/11050792"
+    },
     "pdfPath": "",
     "sortOrder": 1,
     "shortTitle": "ResearchBot",
@@ -86,7 +86,7 @@
     "year": 2025,
     "venue": "2025 IEEE High Performance Extreme Computing Conference (HPEC), 1\u20137",
     "status": "Published",
-    "authors": "R Prabhu, WC Feng",
+    "authors": "R Prabhu, W Feng",
     "summary": "Compares MPI/C, MPI/Python, and Python-based Apache Arrow implementations to study performance, scalability, and developer productivity tradeoffs.",
     "abstract": "Compares MPI/C, MPI/Python, and Python-based Apache Arrow implementations to study performance, scalability, and developer productivity tradeoffs.",
     "areas": [
@@ -110,7 +110,7 @@
       "columnar layout",
       "HPC"
     ],
-    "links": {},
+    "links": {"IEEE Xplore": "https://ieeexplore.ieee.org/document/11196398"},
     "pdfPath": "",
     "sortOrder": 2,
     "shortTitle": "Arrow / MPI",
@@ -147,7 +147,9 @@
       "deep learning",
       "computer vision"
     ],
-    "links": {},
+    "links": {
+      "IEEE Xplore": "https://ieeexplore.ieee.org/document/10637253"
+    },
     "pdfPath": "",
     "sortOrder": 3,
     "shortTitle": "CT Enhancement",
@@ -188,7 +190,9 @@
       "HPC",
       "viral evolution"
     ],
-    "links": {},
+    "links": {
+      "IEEE Xplore": "https://ieeexplore.ieee.org/document/10938466"
+    },
     "pdfPath": "",
     "sortOrder": 4,
     "shortTitle": "SparkLeBLAST",
@@ -225,7 +229,9 @@
       "visual computing",
       "human-machine interaction"
     ],
-    "links": {},
+    "links": {
+      "ACM Digital Library": "https://dl.acm.org/doi/10.1007/978-3-031-20713-6_6"
+    },
     "pdfPath": "",
     "sortOrder": 5,
     "shortTitle": "Interactive Projections",
@@ -262,7 +268,9 @@
       "image sorting",
       "transfer learning"
     ],
-    "links": {},
+    "links": {
+      "ESS Open Archive": "https://essopenarchive.org/doi/full/10.1002/essoar.10508768.1"
+    },
     "pdfPath": "",
     "sortOrder": 6,
     "shortTitle": "Plant Phenotypes",

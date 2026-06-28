@@ -1,8 +1,8 @@
 document.documentElement.classList.add("js");
 
-const graphPromise = fetch("data/research-graph.json").then(r => r.json()).catch(() => null);
-const artifactsPromise = fetch("data/artifacts.json").then(r => r.json()).catch(() => []);
-const newsPromise = fetch("data/news.json").then(r => r.json()).catch(() => []);
+const graphPromise = fetch("data/research-graph.json", { cache: "no-store" }).then(r => r.json()).catch(() => null);
+const artifactsPromise = fetch("data/artifacts.json", { cache: "no-store" }).then(r => r.json()).catch(() => []);
+const newsPromise = fetch("data/news.json", { cache: "no-store" }).then(r => r.json()).catch(() => []);
 
 let currentGraph = null;
 let currentArtifacts = [];
@@ -102,16 +102,15 @@ function statusLabel(item) {
 
 function publicationCard(item) {
   const status = statusLabel(item);
-  const badgeClass = status === "To appear" ? "to-appear" : "published";
+  const statusNote = status === "To appear" ? ` <span class="pub-status-note">(to appear)</span>` : "";
   return `
     <article class="publication">
       <div>
         <h3>${escapeHTML(item.title)}</h3>
         <p class="authors">${formatAuthors(item.authors || "")}</p>
-        <p class="pub-venue">${venueLine(item)}</p>
+        <p class="pub-venue">${venueLine(item)}${statusNote}</p>
       </div>
       <div class="pub-actions">
-        <span class="status-badge ${badgeClass}">${status}</span>
         <div class="pub-links">${linkifyLinks(item.links, item)}</div>
       </div>
     </article>
@@ -145,17 +144,42 @@ function renderRecentPublications(artifacts) {
   list.innerHTML = pubs.length ? pubs.map(publicationCard).join("") : `<p>No publication entries yet.</p>`;
 }
 
+function isJournalPublication(item) {
+  const category = String(item.category || "").toLowerCase();
+  if (category === "journal papers" || category === "journal") return true;
+  const venue = String(item.venue || "").toLowerCase();
+  return /\b(journal|transactions|letters|magazine)\b/.test(venue);
+}
+
+function isConferencePublication(item) {
+  const category = item.category || "Papers";
+  return (category === "Papers" || category === "Conference Papers") && !isJournalPublication(item);
+}
+
 function renderFullPublications(artifacts) {
   const host = document.querySelector("#publication-full-list");
   if (!host) return;
   const categories = [
-    { key: "Papers", label: "Full papers" },
-    { key: "Workshop Papers", label: "Workshop papers" },
-    { key: "Preprints", label: "Preprints" }
+    {
+      label: "Conference Papers",
+      test: isConferencePublication
+    },
+    {
+      label: "Journal Papers",
+      test: isJournalPublication
+    },
+    {
+      label: "Workshop Papers",
+      test: item => item.category === "Workshop Papers"
+    },
+    {
+      label: "Preprints",
+      test: item => item.category === "Preprints"
+    }
   ];
   const pubs = artifacts.filter(item => item.type === "publication").sort(sortArtifacts);
   host.innerHTML = categories.map(category => {
-    const items = pubs.filter(item => (item.category || "Papers") === category.key);
+    const items = pubs.filter(category.test);
     if (!items.length) return "";
     return `
       <section class="publication-category">
