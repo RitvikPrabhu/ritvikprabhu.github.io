@@ -821,7 +821,7 @@ html.home-snap {
 
 /* v19: experience page in the same academic style as publications */
 .experience-page {
-  max-width: 1040px;
+  max-width: 1100px;
 }
 .page-main.experience-page {
   padding-top: 6px;
@@ -832,17 +832,21 @@ html.home-snap {
 .experience-hero h1 {
   font-size: clamp(46px, 7vw, 84px);
 }
+.experience-hero .section-jump {
+  margin-top: 10px;
+  font-size: 15px;
+}
 .experience-index {
-  margin-top: 34px;
+  margin-top: 24px;
   padding: 0;
 }
 .experience-category {
-  margin-bottom: 56px;
+  margin-bottom: 38px;
   scroll-margin-top: 90px;
 }
 .experience-category > h2 {
-  margin: 0 0 18px;
-  padding-bottom: 10px;
+  margin: 0 0 14px;
+  padding-bottom: 8px;
   border-bottom: 2px solid rgba(32,39,52,.78);
   color: #202734;
   font-size: clamp(25px, 3vw, 34px);
@@ -851,16 +855,16 @@ html.home-snap {
 }
 .experience-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(170px, max-content);
-  gap: clamp(20px, 5vw, 56px);
-  padding: 28px 0;
+  grid-template-columns: minmax(0, 1fr) minmax(160px, max-content);
+  gap: clamp(18px, 4vw, 36px);
+  padding: 22px 0;
   border-bottom: 1px solid rgba(54,66,86,.22);
 }
 .experience-item:first-of-type {
   padding-top: 0;
 }
 .experience-item h3 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   color: #202734;
   font-size: clamp(22px, 2.4vw, 28px);
   line-height: 1.2;
@@ -875,30 +879,29 @@ html.home-snap {
 .experience-role {
   margin: 0;
   color: #303846;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 750;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 .experience-location {
-  margin: 2px 0 14px;
-  color: #5d6470;
-  font-size: 15px;
-  line-height: 1.4;
+  margin: 1px 0 10px;
+  color: #4f5965;
+  font-size: 16px;
+  line-height: 1.35;
 }
 .experience-summary {
   max-width: 820px;
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: #303846;
-  font-size: 17px;
-  line-height: 1.45;
+  font-size: 18px;
+  line-height: 1.42;
 }
 .experience-item time {
-  padding-top: 7px;
-  color: var(--accent2);
-  font-family: "JetBrains Mono", ui-monospace, monospace;
-  font-size: 14px;
-  font-weight: 800;
-  line-height: 1.4;
+  padding-top: 5px;
+  color: #46515f;
+  font-size: 16px;
+  font-weight: 650;
+  line-height: 1.35;
   text-align: right;
   white-space: nowrap;
 }
@@ -908,9 +911,9 @@ html.home-snap {
   color: #444d59;
 }
 .experience-item li {
-  margin: 8px 0;
-  font-size: 16px;
-  line-height: 1.55;
+  margin: 6px 0;
+  font-size: 17px;
+  line-height: 1.5;
 }
 @media (max-width: 760px) {
   .experience-page {
@@ -921,8 +924,8 @@ html.home-snap {
   }
   .experience-item {
     grid-template-columns: 1fr;
-    gap: 8px;
-    padding: 24px 0;
+    gap: 6px;
+    padding: 20px 0;
   }
   .experience-item time {
     order: -1;
