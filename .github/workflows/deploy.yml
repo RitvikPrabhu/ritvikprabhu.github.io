@@ -37,7 +37,6 @@ jobs:
           mkdir dist
           cp index.html dist/
           cp publications.html dist/
-          cp cv.html dist/
           cp main.js dist/
           cp styles.css dist/
           cp -R assets dist/
