@@ -150,7 +150,7 @@ export const education = [
 export const honors = [
   {
     title: "Pratt Fellowship",
-    date: "2025–26 academic year",
+    date: "2025–26",
     description:
       "Awarded for academic excellence and demonstrated research potential within the College of Engineering at Virginia Tech.",
   },
