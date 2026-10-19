@@ -4,11 +4,17 @@ import portrait from "../assets/portrait.jpg";
 import Base from "../layouts/BaseLayout.astro";
 import ProfileLinks from "../components/ProfileLinks.astro";
 import { site } from "../data/site";
-import { research, internships } from "../data/experience";
+import {
+  research,
+  internships,
+  education,
+  honors,
+  service,
+} from "../data/experience";
 import news from "../data/news.json";
 ---
 
-<Base title="About">
+<Base title="About" description={site.about[0]}>
   <div class="page-heading">
     <p class="eyebrow">A little background</p>
     <h1>
@@ -27,11 +33,9 @@ import news from "../data/news.json";
       loading="eager"
     />
     <div class="about-copy">
-      <p>{site.introduction}</p>
-      <p>
-        My research experience spans scalable genomic analysis, medical imaging,
-        interactive visual analytics, and GPU kernel optimization.
-      </p>
+      {site.about.map((paragraph) => (
+        <p>{paragraph}</p>
+      ))}
       <p class="location">{site.location}</p>
       <ProfileLinks />
     </div>
@@ -69,12 +73,41 @@ import news from "../data/news.json";
   <section class="cv-section">
     <h2>Education</h2>
     <div>
-      <article class="experience">
-        <h3>Virginia Tech</h3>
-        <p class="role">PhD student, Computer Science</p>
-        <p class="location">Blacksburg, Virginia</p>
-        <p class="summary">Successfully defended MS thesis in May 2026.</p>
-      </article>
+      {education.map((entry) => (
+        <article class="experience">
+          <p class="dates">{entry.date}</p>
+          <h3>{entry.degree}</h3>
+          <p class="role">Virginia Tech</p>
+          <p class="location">
+            {site.location} · Cumulative GPA: {entry.gpa}
+          </p>
+          <p class="summary">{entry.details}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="cv-section">
+    <h2>Awards & recognition</h2>
+    <div>
+      {honors.map((entry) => (
+        <article class="experience">
+          {entry.date && <p class="dates">{entry.date}</p>}
+          <h3>{entry.title}</h3>
+          <p class="summary">{entry.description}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+  <section class="cv-section">
+    <h2>Professional service</h2>
+    <div>
+      {service.map((entry) => (
+        <article class="experience">
+          <p class="dates">{entry.year}</p>
+          <h3>{entry.role}</h3>
+          <p class="role">{entry.venue}</p>
+        </article>
+      ))}
     </div>
   </section>
   <section class="cv-section">

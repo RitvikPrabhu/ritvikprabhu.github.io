@@ -66,10 +66,10 @@ The single `example.mdx` is visibly labeled, `noindex`, and excluded from regula
 
 ## Profile, About, and design
 
-- `src/data/site.ts`: name, bio, contact/profile URLs, location, and optional CV URL.
-- `src/data/experience.ts`: all research and internship entries, including detail bullets.
+- `src/data/site.ts`: name, homepage introduction, About biography paragraphs, contact/profile URLs, location, and optional CV URL.
+- `src/data/experience.ts`: research, internships, education, awards/recognition, and professional service. About information was updated from the owner-provided resume; edit these arrays to keep it current.
 - `src/data/news.json`: original dated news items displayed on About.
-- `src/pages/about.astro`: introductory text and education. Only facts available on the previous public site were included; no degree dates, awards, or service were inferred.
+- `src/pages/about.astro`: About layout; content comes from the data files above. Expected graduation dates and award nominations are explicitly labeled, and unknown dates are omitted.
 - `src/assets/portrait.jpg`: preserved original portrait, optimized by Astro at build time.
 - `src/styles/global.css`: semantic light/dark colors, width/spacing/type tokens, responsive layouts, prose, reduced motion.
 - `src/layouts/BaseLayout.astro`: shared document, navigation, metadata, footer, theme, and Astro page transitions.
@@ -87,6 +87,6 @@ Old `/experience.html` and `/publications.html` links remain as small static red
 
 ## Migration notes and references
 
-All seven original publications and their metadata/URLs, six experience entries and detail bullets, three news items, profile links, email, and portrait were preserved. Scholar and LinkedIn URLs came from the old HTML (the old profile JSON contained placeholders). The original IPDPS “To appear” status and the May 2026 Oak Ridge news item are intentionally unchanged; the experience entry separately records the 2025 internship. Review those source facts when updating your public information.
+All seven original publications and their metadata/URLs, six experience entries, three news items, profile links, email, and portrait were migrated. Scholar and LinkedIn URLs came from the old HTML (the old profile JSON contained placeholders). About was subsequently updated from the owner-provided resume: it now includes DSSL, separate 2025 and 2026 Oak Ridge internships, Synergy’s July 2026 end date, degree details, awards, and service. The uploaded resume PDF itself is not published. Publication records remain unchanged, including the original IPDPS “To appear” status.
 
 Design/architecture references: [Tanuj Ravi Rao](https://tansanrao.com/) and [Astro MultiPage Portfolio](https://github.com/tomcomtang/astro-multiplepage-portfolio). The implementation is original: it borrows the ideas of small dedicated pages, shared layouts, and text-first content, not reference text, CSS, artwork, or digital-garden features. Tailwind and template client-side post rendering were unnecessary for this small CSS-token-based design.

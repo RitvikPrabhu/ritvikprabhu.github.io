@@ -9,15 +9,29 @@ export interface Experience {
 }
 export const research: Experience[] = [
   {
+    organization: "Distributed Systems & Storage Laboratory, Virginia Tech",
+    role: "Graduate Research Assistant",
+    location: "Blacksburg, Virginia",
+    dates: "Aug 2026 – Present",
+    summary:
+      "High-performance computing, numerical optimization, and systems for large-scale transformer models.",
+    details: [
+      "Investigating higher-order optimization techniques for transformer training to improve convergence and training efficiency beyond first-order optimizers such as AdamW.",
+      "Designing federated self-learning agent systems that let clients contribute, consolidate, and reuse learned capabilities, with attention to coordination, scalability, and safe knowledge sharing.",
+      "Exploring systems and compiler techniques for training and serving Mixture-of-Experts models on specialized accelerators, including computation placement, communication, and heterogeneous execution.",
+    ],
+  },
+  {
     organization: "Synergy Lab, Virginia Tech",
     role: "Graduate Research Assistant",
     location: "Blacksburg, Virginia",
-    dates: "Mar 2022 – Present",
+    dates: "Mar 2022 – Jul 2026",
     summary:
       "High-performance systems for scalable genomic analysis, medical imaging, and edge computing.",
     details: [
       "Studied SparkLeBLAST scalability on A64FX systems and worked with RIKEN collaborators on data layout, vectorization, and format-conversion bottlenecks.",
       "Explored Apache Arrow and Arrow Flight for genomic analysis pipelines; contributed to low-dose chest CT enhancement work using 3D-DDNet and VGG-based models.",
+      "Implemented power-of-two FFTs for large sets of sequences, each of length 8192, on Raspberry Pi 5 edge devices using an OpenCL-based, write-once-run-anywhere pipeline.",
     ],
   },
   {
@@ -29,7 +43,7 @@ export const research: Experience[] = [
       "Interactive visual analytics for image sorting and human-in-the-loop machine learning.",
     details: [
       "Worked on Andromeda features for exploratory sorting of edamame seed images.",
-      "Built tools for clustering images using domain feedback, pretrained image projections, and tuned feature-space distance weights.",
+      "Built tools for clustering images using domain feedback and pretrained VGG-16 and ResNet projections; tuned feature-space distance weights from user-driven projections to improve sorting accuracy.",
     ],
   },
   {
@@ -47,6 +61,19 @@ export const research: Experience[] = [
   },
 ];
 export const internships: Experience[] = [
+  {
+    organization: "Oak Ridge National Laboratory",
+    role: "Student Intern",
+    location: "Oak Ridge, Tennessee",
+    dates: "May 2026 – Aug 2026",
+    summary:
+      "Distributed higher-order optimization for large-language-model and transformer training.",
+    details: [
+      "Investigated higher-order optimization methods as alternatives to first-order optimizers such as AdamW, and developed distributed optimizer support for NVIDIA’s Megatron-LM tensor-parallel framework.",
+      "Addressed numerical, communication, and memory challenges in scaling optimizer computations beyond a single GPU’s capacity.",
+      "Implemented and evaluated multi-GPU prototypes on leadership-class computing systems, with results being prepared for publication.",
+    ],
+  },
   {
     organization: "Oak Ridge National Laboratory",
     role: "Student Intern",
@@ -83,5 +110,79 @@ export const internships: Experience[] = [
       "Worked on indexing and querying workflows for millions of IoT devices across multiple databases.",
       "Built a tracking feature for indexing progress, wrote status data into Elasticsearch, and used AWS CloudWatch for backfill metrics.",
     ],
+  },
+];
+
+export const education = [
+  {
+    degree: "PhD in Computer Science",
+    date: "Expected May 2028",
+    gpa: "3.75",
+    details:
+      "Research areas: High-Performance Computing, Numerical Optimization, and Transformer Models.",
+  },
+  {
+    degree: "MS in Computer Science",
+    date: "Jul 2026",
+    gpa: "3.75",
+    details:
+      "Thesis: Sparsity-Driven Search for Multi-Hit Genetic Mutation Combinations in Cancer.",
+  },
+  {
+    degree:
+      "BS in Computer Science; BS in Computational Modeling & Data Analytics",
+    date: "May 2023",
+    gpa: "3.74",
+    details: "Minor in Mathematics.",
+  },
+];
+
+export const honors = [
+  {
+    title: "Pratt Fellowship",
+    date: "2025–26 academic year",
+    description:
+      "Awarded for academic excellence and demonstrated research potential within the College of Engineering.",
+  },
+  {
+    title: "Outstanding Master’s Student Award Nomination",
+    date: "",
+    description:
+      "Nominated by the Computer Science Department as its representative for the College of Engineering’s Best Master’s Student Award.",
+  },
+  {
+    title: "Outstanding Student Paper Award",
+    date: "2024",
+    description:
+      "IEEE HPEC, for “Analyzing Scalable Genomic Diversity Study using SparkLeBLAST: A Feasibility Study.”",
+  },
+  {
+    title: "Stony Brook Supercomputing Center Success Story",
+    date: "",
+    description:
+      "Featured by Stony Brook University’s Supercomputing Center for achievements in high-performance computing research.",
+  },
+];
+
+export const service = [
+  {
+    role: "Web Chair",
+    venue: "IEEE International Conference on Cluster Computing (CLUSTER)",
+    year: "2026",
+  },
+  {
+    role: "Student Volunteer",
+    venue: "IEEE International Conference on Cluster Computing (CLUSTER)",
+    year: "2026",
+  },
+  {
+    role: "Student Volunteer",
+    venue: "International Parallel & Distributed Processing Symposium (IPDPS)",
+    year: "2026",
+  },
+  {
+    role: "Student Volunteer",
+    venue: "IEEE International Conference on Parallel Processing (ICPP)",
+    year: "2025",
   },
 ];
