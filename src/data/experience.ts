@@ -156,7 +156,7 @@ export const honors = [
   },
   {
     title: "Outstanding Master’s Student Award Nomination",
-    date: "",
+    date: "2025",
     description:
       "Nominated by the Computer Science Department as its representative for the College of Engineering’s Best Master’s Student Award.",
   },
@@ -168,8 +168,8 @@ export const honors = [
   },
   {
     title: "Stony Brook Supercomputing Center Success Story",
-    url: "https://sbusc.stonybrook.edu/stories",
-    date: "",
+    url: "https://sbsc.stonybrook.edu/stories",
+    date: "2024",
     description:
       "Featured by Stony Brook University’s Supercomputing Center for achievements in high-performance computing research.",
   },
