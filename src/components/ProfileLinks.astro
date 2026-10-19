@@ -15,7 +15,13 @@ const paths: Record<string, string> = {
 
 <div class="profile-links" aria-label="Contact and profiles">
   {site.links.map((link) => (
-    <a href={link.href} aria-label={link.label} title={link.label}>
+    <a
+      href={link.href}
+      target={link.href.startsWith("https://") ? "_blank" : undefined}
+      rel={link.href.startsWith("https://") ? "noopener noreferrer" : undefined}
+      aria-label={link.label}
+      title={link.label}
+    >
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d={paths[link.label]} />
         {link.label === "Google Scholar" && (
@@ -24,5 +30,9 @@ const paths: Record<string, string> = {
       </svg>
     </a>
   ))}
-  {site.cv && <a href={site.cv}>CV ↗</a>}
+  {site.cv && (
+    <a href={site.cv} target="_blank" rel="noopener noreferrer">
+      CV ↗
+    </a>
+  )}
 </div>

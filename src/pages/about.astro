@@ -72,7 +72,9 @@ import {
             <p class="dates">{entry.dates}</p>
             <h3>
               {entry.url ? (
-                <a href={entry.url}>{entry.organization} ↗</a>
+                <a href={entry.url} target="_blank" rel="noopener noreferrer">
+                  {entry.organization} ↗
+                </a>
               ) : (
                 entry.organization
               )}
@@ -94,7 +96,13 @@ import {
         <article class="experience">
           {entry.date && <p class="dates">{entry.date}</p>}
           <h3>
-            {entry.url ? <a href={entry.url}>{entry.title} ↗</a> : entry.title}
+            {entry.url ? (
+              <a href={entry.url} target="_blank" rel="noopener noreferrer">
+                {entry.title} ↗
+              </a>
+            ) : (
+              entry.title
+            )}
           </h3>
           <p class="summary">{entry.description}</p>
         </article>

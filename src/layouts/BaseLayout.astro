@@ -111,7 +111,11 @@ const nav = [
             {label}
           </a>
         ))}
-        {site.cv && <a href={site.cv}>CV ↗</a>}
+        {site.cv && (
+          <a href={site.cv} target="_blank" rel="noopener noreferrer">
+            CV ↗
+          </a>
+        )}
       </nav>
       <button
         class="theme-toggle"

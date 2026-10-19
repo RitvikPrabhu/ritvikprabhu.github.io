@@ -88,6 +88,8 @@ Both search interfaces keep result counts screen-reader-only, with compact spaci
 
 The favicon is a path-based lowercase **r** with a square full stop, in warm ivory on the site's teal. It uses no font or external assets, so its letterform is consistent across browsers.
 
+External profile, publication, and About links open in a new tab with `noopener noreferrer`. Markdown/MDX external web links use the same behavior automatically. Internal navigation and article anchors stay in the current tab, and email links use the mail app. CV and publication documents also open separately.
+
 No CV document existed in the original repository. To add one, place it at `public/cv.pdf` and set `site.cv` to `/cv.pdf`; it automatically appears in the navigation and profile links. Do not add an empty document or dead link.
 
 The interface uses system sans-serif and platform serif fonts (no font network requests), one teal accent, native controls, and minimal JavaScript. Regular text and metadata are at least 18px, and section links are 20px. `ProfileLinks.astro` reuses the original site's inline SVG icons with accessible names and 44px targets. Theme follows the OS until explicitly changed; explicit preference persists. The homepage greeting types once, reserves its full layout, and ends with a blinking cursor. Reduced motion shows the full greeting immediately with a static cursor. Other animations also honor reduced motion.
