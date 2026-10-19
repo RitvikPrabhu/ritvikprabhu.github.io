@@ -5,8 +5,8 @@ export const site = {
   introduction:
     "I’m a Computer Science PhD student at Virginia Tech working on high-performance computing systems for scalable scientific and machine-learning applications.",
   about: [
-    "I’m a Computer Science PhD student at Virginia Tech and a graduate research assistant in the Distributed Systems & Storage Laboratory. My research focuses on high-performance computing, numerical optimization, and transformer models.",
-    "I work on higher-order optimization for large-scale transformer training, federated self-learning agent systems, and efficient training and serving of Mixture-of-Experts models on specialized accelerators. Previously, I worked on scalable genomic analysis, medical imaging, interactive visual analytics, and GPU kernel optimization.",
+    "From searching for cancer-associated mutations to training transformers across GPUs, my research follows a common question: how can we make large computations work better? I’m a Computer Science PhD student at Virginia Tech, working in the Distributed Systems & Storage Laboratory.",
+    "These days, I study how transformers learn—and how the systems underneath them can keep up. That means higher-order optimizers, agents that share what they learn, and efficient training and serving of Mixture-of-Experts models on specialized accelerators. My work has taken me from genomic analysis on supercomputers to FFTs on a Raspberry Pi; the scale changes, but the questions about computation and communication carry over.",
   ],
   location: "Blacksburg, Virginia",
   cv: "", // Add /cv.pdf here after placing the document in public/.

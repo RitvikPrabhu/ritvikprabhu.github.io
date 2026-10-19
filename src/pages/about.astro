@@ -11,12 +11,10 @@ import {
   honors,
   service,
 } from "../data/experience";
-import news from "../data/news.json";
 ---
 
 <Base title="About" description={site.about[0]}>
   <div class="page-heading">
-    <p class="eyebrow">A little background</p>
     <h1>
       About<span class="accent">.</span>
     </h1>
@@ -29,23 +27,49 @@ import news from "../data/news.json";
       widths={[230, 460]}
       sizes="(max-width: 480px) 180px, (max-width: 760px) 150px, 230px"
       width={460}
-      height={560}
+      height={460}
       loading="eager"
     />
     <div class="about-copy">
       {site.about.map((paragraph) => (
         <p>{paragraph}</p>
       ))}
-      <p class="location">{site.location}</p>
       <ProfileLinks />
     </div>
   </section>
+  <nav class="about-sections" aria-label="About sections">
+    <a href="#education">Education</a>
+    <a href="#research">Research</a>
+    <a href="#internships">Internships</a>
+    <a href="#awards">Awards & recognition</a>
+    <a href="#service">Professional service</a>
+  </nav>
+  <section class="cv-section" aria-labelledby="education">
+    <h2 id="education" tabindex="-1">
+      Education
+    </h2>
+    <div>
+      {education.map((entry) => (
+        <article class="experience">
+          <p class="dates">{entry.date}</p>
+          <h3>{entry.degree}</h3>
+          <p class="role">Virginia Tech</p>
+          <p class="location">
+            {site.location} · Cumulative GPA: {entry.gpa}
+          </p>
+          <p class="summary">{entry.details}</p>
+        </article>
+      ))}
+    </div>
+  </section>
   {[
-    { title: "Research", entries: research },
-    { title: "Internships", entries: internships },
+    { id: "research", title: "Research", entries: research },
+    { id: "internships", title: "Internships", entries: internships },
   ].map((section) => (
-    <section class="cv-section">
-      <h2>{section.title}</h2>
+    <section class="cv-section" aria-labelledby={section.id}>
+      <h2 id={section.id} tabindex="-1">
+        {section.title}
+      </h2>
       <div>
         {section.entries.map((entry) => (
           <article class="experience">
@@ -70,36 +94,26 @@ import news from "../data/news.json";
       </div>
     </section>
   ))}
-  <section class="cv-section">
-    <h2>Education</h2>
-    <div>
-      {education.map((entry) => (
-        <article class="experience">
-          <p class="dates">{entry.date}</p>
-          <h3>{entry.degree}</h3>
-          <p class="role">Virginia Tech</p>
-          <p class="location">
-            {site.location} · Cumulative GPA: {entry.gpa}
-          </p>
-          <p class="summary">{entry.details}</p>
-        </article>
-      ))}
-    </div>
-  </section>
-  <section class="cv-section">
-    <h2>Awards & recognition</h2>
+  <section class="cv-section" aria-labelledby="awards">
+    <h2 id="awards" tabindex="-1">
+      Awards & recognition
+    </h2>
     <div>
       {honors.map((entry) => (
         <article class="experience">
           {entry.date && <p class="dates">{entry.date}</p>}
-          <h3>{entry.title}</h3>
+          <h3>
+            {entry.url ? <a href={entry.url}>{entry.title} ↗</a> : entry.title}
+          </h3>
           <p class="summary">{entry.description}</p>
         </article>
       ))}
     </div>
   </section>
-  <section class="cv-section">
-    <h2>Professional service</h2>
+  <section class="cv-section" aria-labelledby="service">
+    <h2 id="service" tabindex="-1">
+      Professional service
+    </h2>
     <div>
       {service.map((entry) => (
         <article class="experience">
@@ -107,17 +121,6 @@ import news from "../data/news.json";
           <h3>{entry.role}</h3>
           <p class="role">{entry.venue}</p>
         </article>
-      ))}
-    </div>
-  </section>
-  <section class="cv-section">
-    <h2>News & highlights</h2>
-    <div>
-      {news.map((item) => (
-        <div class="news-row">
-          <time>{item.date}</time>
-          <p>{item.title}</p>
-        </div>
       ))}
     </div>
   </section>

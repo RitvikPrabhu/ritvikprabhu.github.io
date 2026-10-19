@@ -68,7 +68,7 @@ The single `example.mdx` is visibly labeled, `noindex`, and excluded from regula
 
 - `src/data/site.ts`: name, homepage introduction, About biography paragraphs, contact/profile URLs, location, and optional CV URL.
 - `src/data/experience.ts`: research, internships, education, awards/recognition, and professional service. About information was updated from the owner-provided resume; edit these arrays to keep it current.
-- `src/data/news.json`: original dated news items displayed on About.
+- `src/data/news.json`: archived original news items; no longer displayed on About.
 - `src/pages/about.astro`: About layout; content comes from the data files above. Expected graduation dates and award nominations are explicitly labeled, and unknown dates are omitted.
 - `src/assets/portrait.jpg`: preserved original portrait, optimized by Astro at build time.
 - `src/styles/global.css`: semantic light/dark colors, width/spacing/type tokens, responsive layouts, prose, reduced motion.
@@ -87,6 +87,6 @@ Old `/experience.html` and `/publications.html` links remain as small static red
 
 ## Migration notes and references
 
-All seven original publications and their metadata/URLs, six experience entries, three news items, profile links, email, and portrait were migrated. Scholar and LinkedIn URLs came from the old HTML (the old profile JSON contained placeholders). About was subsequently updated from the owner-provided resume: it now includes DSSL, separate 2025 and 2026 Oak Ridge internships, Synergy’s July 2026 end date, degree details, awards, and service. The uploaded resume PDF itself is not published. Publication records remain unchanged, including the original IPDPS “To appear” status.
+All seven original publications and their metadata/URLs, six experience entries, three news items, profile links, email, and portrait were migrated. Scholar and LinkedIn URLs came from the old HTML (the old profile JSON contained placeholders). About was subsequently updated from the owner-provided resume: it now includes DSSL, separate 2025 and 2026 Oak Ridge internships, Synergy’s July 2026 end date, degree details, awards, and service. Embedded resume hyperlinks were retained on the corresponding entries. After owner review, Education leads the CV sections, jump links provide section navigation, and the news section was removed (its original data is archived). The uploaded resume PDF itself is not published. Publication records remain unchanged, including the original IPDPS “To appear” status.
 
 Design/architecture references: [Tanuj Ravi Rao](https://tansanrao.com/) and [Astro MultiPage Portfolio](https://github.com/tomcomtang/astro-multiplepage-portfolio). The implementation is original: it borrows the ideas of small dedicated pages, shared layouts, and text-first content, not reference text, CSS, artwork, or digital-garden features. Tailwind and template client-side post rendering were unnecessary for this small CSS-token-based design.

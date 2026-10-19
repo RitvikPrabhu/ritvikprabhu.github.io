@@ -422,19 +422,21 @@ main:focus {
 }
 .portrait {
   width: 230px;
-  height: 280px;
+  height: 230px;
   object-fit: cover;
   object-position: center;
-  border-radius: 3px;
+  border-radius: 50%;
 }
 .about-copy > p {
   margin-bottom: 18px;
   font-size: 18px;
 }
-.about-copy .location {
-  font-size: 13px;
-  color: var(--muted);
-  margin-bottom: 14px;
+.about-sections {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-bottom: 30px;
+  font-size: 14px;
 }
 .cv-section {
   display: grid;
@@ -446,6 +448,7 @@ main:focus {
 }
 .cv-section > h2 {
   font-size: 26px;
+  scroll-margin-top: 32px;
 }
 .experience {
   padding-bottom: 28px;
@@ -481,17 +484,6 @@ main:focus {
 }
 .experience li + li {
   margin-top: 8px;
-}
-.news-row {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 24px;
-  padding-bottom: 18px;
-  font-size: 14px;
-}
-.news-row time {
-  font-size: 12px;
-  color: var(--muted);
 }
 footer.shell {
   display: flex;
@@ -727,7 +719,7 @@ footer a {
   }
   .portrait {
     width: 150px;
-    height: 200px;
+    height: 150px;
   }
   .about-copy > p {
     font-size: 16px;
@@ -780,11 +772,7 @@ footer a {
   }
   .portrait {
     width: 180px;
-    height: 220px;
-  }
-  .news-row {
-    grid-template-columns: 1fr;
-    gap: 3px;
+    height: 180px;
   }
   .prose {
     font-size: 17px;

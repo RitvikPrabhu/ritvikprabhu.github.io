@@ -10,6 +10,7 @@ export interface Experience {
 export const research: Experience[] = [
   {
     organization: "Distributed Systems & Storage Laboratory, Virginia Tech",
+    url: "https://dssl.cs.vt.edu/",
     role: "Graduate Research Assistant",
     location: "Blacksburg, Virginia",
     dates: "Aug 2026 – Present",
@@ -23,6 +24,7 @@ export const research: Experience[] = [
   },
   {
     organization: "Synergy Lab, Virginia Tech",
+    url: "https://synergy.cs.vt.edu/",
     role: "Graduate Research Assistant",
     location: "Blacksburg, Virginia",
     dates: "Mar 2022 – Jul 2026",
@@ -36,6 +38,7 @@ export const research: Experience[] = [
   },
   {
     organization: "InfoVis Lab, Virginia Tech",
+    url: "https://infovis.cs.vt.edu/content/home",
     role: "Undergraduate Research Assistant",
     location: "Blacksburg, Virginia",
     dates: "May 2021 – May 2022",
@@ -63,6 +66,7 @@ export const research: Experience[] = [
 export const internships: Experience[] = [
   {
     organization: "Oak Ridge National Laboratory",
+    url: "https://www.ornl.gov/",
     role: "Student Intern",
     location: "Oak Ridge, Tennessee",
     dates: "May 2026 – Aug 2026",
@@ -76,6 +80,7 @@ export const internships: Experience[] = [
   },
   {
     organization: "Oak Ridge National Laboratory",
+    url: "https://www.ornl.gov/",
     role: "Student Intern",
     location: "Oak Ridge, Tennessee",
     dates: "May 2025 – Aug 2025",
@@ -89,6 +94,7 @@ export const internships: Experience[] = [
   },
   {
     organization: "RIKEN Center for Computational Science",
+    url: "https://www.r-ccs.riken.jp/en/about/",
     role: "Student Research Intern",
     location: "Tokyo, Japan",
     dates: "Oct 2024 – Dec 2024",
@@ -158,6 +164,7 @@ export const honors = [
   },
   {
     title: "Stony Brook Supercomputing Center Success Story",
+    url: "https://sbusc.stonybrook.edu/stories",
     date: "",
     description:
       "Featured by Stony Brook University’s Supercomputing Center for achievements in high-performance computing research.",
