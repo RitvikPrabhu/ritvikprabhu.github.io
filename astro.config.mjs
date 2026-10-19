@@ -6,6 +6,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeExternalLinks from "rehype-external-links";
 
 export default defineConfig({
   site: "https://ritvikprabhu.github.io",
@@ -30,6 +31,16 @@ export default defineConfig({
         rehypeKatex,
         rehypeSlug,
         [rehypeAutolinkHeadings, { behavior: "wrap" }],
+        [
+          rehypeExternalLinks,
+          {
+            target: "_blank",
+            rel: ["noopener", "noreferrer"],
+            test: (element) =>
+              new URL(element.properties.href, "https://ritvikprabhu.github.io")
+                .origin !== "https://ritvikprabhu.github.io",
+          },
+        ],
       ],
     }),
     shikiConfig: { themes: { light: "github-light", dark: "github-dark" } },

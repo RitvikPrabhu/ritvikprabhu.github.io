@@ -55,7 +55,7 @@ const links = {
     {p.award && <p class="award">{p.award}</p>}
     <div class="pub-links">
       {Object.entries(links).map(([label, href]) => (
-        <a href={href}>
+        <a href={href} target="_blank" rel="noopener noreferrer">
           {label.toLowerCase() === "arxiv" ? "arXiv" : label}
           <span aria-hidden="true"> ↗</span>
         </a>
