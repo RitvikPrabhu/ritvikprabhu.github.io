@@ -12,6 +12,10 @@ export default defineConfig({
   output: "static",
   trailingSlash: "always",
   devToolbar: { enabled: false },
+  vite: {
+    server: { allowedHosts: [".onamp.dev"] },
+    preview: { allowedHosts: [".onamp.dev"] },
+  },
   integrations: [
     mdx(),
     sitemap({
