@@ -11,13 +11,10 @@ const years = [...new Set(posts.map((p) => p.data.published.getUTCFullYear()))];
   description="Technical and research writing by Ritvik Prabhu."
 >
   <div class="page-heading">
-    <p class="eyebrow">The blog</p>
     <h1>
       Writing<span class="accent">.</span>
     </h1>
-    <p>
-      Technical and research writing, with room to work through the details.
-    </p>
+    <p>Technical and research writing.</p>
   </div>
   {posts.length ? (
     years.map((year) => (
@@ -32,7 +29,6 @@ const years = [...new Set(posts.map((p) => p.data.published.getUTCFullYear()))];
     ))
   ) : (
     <div class="writing-empty">
-      <h2>A little space for longer thoughts.</h2>
       <p>No articles published yet.</p>
       <p>
         In the meantime, you can browse my{" "}

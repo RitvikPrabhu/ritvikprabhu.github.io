@@ -6,7 +6,7 @@
     "title": "Looking for (Genomic) Needles in a Haystack: Sparsity-Driven Search for Identifying Correlated Genetic Mutations in Cancer",
     "year": 2026,
     "venue": "IEEE International Parallel & Distributed Processing Symposium (IPDPS)",
-    "status": "To appear",
+    "status": "Published",
     "authors": "R Prabhu, E Vatai, B Moussad, E Jeannot, R Anandakrishnan, W Feng, M Wahib",
     "summary": "Uses sparsity-driven pruned depth-first search to make multi-hit cancer mutation search feasible at large scale.",
     "abstract": "Uses sparsity-driven pruned depth-first search to make multi-hit cancer mutation search feasible at large scale.",
@@ -29,7 +29,7 @@
       "load balance"
     ],
     "links": {
-      "arxiv": "https://arxiv.org/abs/2603.16721"
+      "IEEE Xplore": "https://ieeexplore.ieee.org/document/11575339"
     },
     "sortOrder": 0,
     "shortTitle": "Mutation Search",

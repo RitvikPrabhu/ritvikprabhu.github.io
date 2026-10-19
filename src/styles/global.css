@@ -39,7 +39,7 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font: 16px/1.65 var(--sans);
+  font: 18px/1.65 var(--sans);
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
@@ -84,7 +84,7 @@ h2 {
   letter-spacing: -0.025em;
 }
 h3 {
-  font-size: 18px;
+  font-size: 20px;
   line-height: 1.45;
   font-weight: 550;
   letter-spacing: -0.012em;
@@ -123,7 +123,7 @@ img {
 .site-header nav {
   display: flex;
   gap: 27px;
-  font-size: 14px;
+  font-size: 16px;
 }
 .site-header nav a {
   text-decoration: none;
@@ -189,15 +189,32 @@ main:focus {
   align-items: center;
 }
 .eyebrow {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 16px;
   color: var(--muted);
   margin-bottom: 22px;
 }
 .intro h1 {
   font-size: clamp(70px, 8vw, 100px);
   line-height: 0.99;
+}
+.typed-line {
+  display: block;
+  position: relative;
+}
+.typed-reserve {
+  visibility: hidden;
+}
+.typed-ink {
+  position: absolute;
+  inset: 0;
+}
+.typed-line:last-child {
+  color: var(--accent);
+}
+.typing::after {
+  content: "│";
+  font-size: 0.8em;
+  font-weight: 400;
 }
 .intro-copy > p {
   font-size: 20px;
@@ -207,23 +224,28 @@ main:focus {
 .profile-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 20px;
-  font-size: 13px;
+  gap: 8px 16px;
+  font-size: 18px;
   color: var(--accent);
 }
 .profile-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
   text-decoration: none;
-  padding-block: 3px;
+  transition: transform 160ms ease;
 }
 .profile-links a:hover {
-  text-decoration: underline;
+  transform: translateY(-2px);
 }
-.intro-copy > .text-link {
-  display: inline-block;
-  margin-top: 28px;
+.profile-links svg {
+  width: 30px;
+  height: 30px;
 }
 .text-link {
-  font-size: 14px;
+  font-size: 16px;
   text-decoration: none;
   color: var(--accent);
 }
@@ -236,6 +258,16 @@ main:focus {
 }
 .home-section {
   margin-bottom: 70px;
+}
+.news-row {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 24px;
+  padding-block: 12px;
+}
+.news-date {
+  color: var(--muted);
+  font-size: 16px;
 }
 .section-heading {
   display: flex;
@@ -257,7 +289,7 @@ main:focus {
 }
 .pub-marker {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 16px;
   font-variant-numeric: tabular-nums;
   padding-top: 4px;
 }
@@ -265,7 +297,7 @@ main:focus {
   margin-bottom: 7px;
 }
 .authors {
-  font-size: 13px;
+  font-size: 16px;
   line-height: 1.7;
   color: var(--muted);
   margin-bottom: 5px;
@@ -275,7 +307,7 @@ main:focus {
   font-weight: 600;
 }
 .venue {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
 }
 .pub-links {
@@ -284,7 +316,7 @@ main:focus {
   flex-wrap: wrap;
   gap: 6px 22px;
   margin-top: 10px;
-  font-size: 12px;
+  font-size: 16px;
   color: var(--accent);
 }
 .pub-links a {
@@ -303,7 +335,7 @@ main:focus {
 .pub-links details > pre {
   flex-basis: 100%;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 16px;
   margin-top: 7px;
 }
 .pub-links pre {
@@ -311,12 +343,12 @@ main:focus {
   overflow-x: auto;
 }
 .award {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--accent);
   margin-top: 8px;
 }
 .empty-state {
-  font-size: 15px;
+  font-size: 18px;
   color: var(--muted);
   max-width: 550px;
   padding-bottom: 6px;
@@ -339,7 +371,7 @@ main:focus {
   display: flex;
   gap: 24px;
   margin-top: 28px;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--accent);
 }
 .year-nav a {
@@ -385,11 +417,11 @@ main:focus {
   grid-template-columns: 120px minmax(0, 1fr);
   gap: 32px;
   margin-top: 32px;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
 }
 .example-note > span {
-  font-size: 12px;
+  font-size: 16px;
 }
 .example-note a {
   color: var(--accent);
@@ -405,7 +437,7 @@ main:focus {
 .post-row time,
 .post-row p {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 16px;
 }
 .post-row h3 a {
   text-decoration: none;
@@ -417,7 +449,7 @@ main:focus {
   display: grid;
   grid-template-columns: 230px 1fr;
   gap: 60px;
-  align-items: start;
+  align-items: center;
   margin-bottom: 72px;
 }
 .portrait {
@@ -436,7 +468,7 @@ main:focus {
   flex-wrap: wrap;
   gap: 12px 28px;
   margin-bottom: 30px;
-  font-size: 14px;
+  font-size: 18px;
 }
 .cv-section {
   display: grid;
@@ -458,7 +490,7 @@ main:focus {
   padding-top: 24px;
 }
 .experience .dates {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   margin-bottom: 7px;
 }
@@ -466,24 +498,15 @@ main:focus {
   margin-bottom: 3px;
 }
 .experience .role {
-  font-size: 14px;
+  font-size: 18px;
 }
 .experience .location {
-  font-size: 13px;
+  font-size: 16px;
   color: var(--muted);
 }
 .experience .summary {
-  font-size: 15px;
+  font-size: 18px;
   margin-top: 14px;
-}
-.experience ul {
-  padding-left: 18px;
-  font-size: 14px;
-  color: var(--muted);
-  margin-block: 12px 0;
-}
-.experience li + li {
-  margin-top: 8px;
 }
 footer.shell {
   display: flex;
@@ -493,7 +516,7 @@ footer.shell {
   margin-top: 90px;
   padding-block: 25px 36px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 16px;
 }
 footer div {
   display: flex;
@@ -520,12 +543,12 @@ footer a {
   margin-top: 24px;
 }
 .article-meta {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   margin-top: 24px;
 }
 .notice {
-  font-size: 13px;
+  font-size: 16px;
   padding: 18px 22px;
   background: var(--surface);
   color: var(--muted);
@@ -537,10 +560,10 @@ footer a {
   margin-bottom: 36px;
 }
 .toc h2 {
-  font: 500 14px var(--sans);
+  font: 500 18px var(--sans);
 }
 .toc ol {
-  font-size: 13px;
+  font-size: 16px;
   padding-left: 20px;
   margin-bottom: 0;
   color: var(--muted);
@@ -586,7 +609,7 @@ footer a {
   font-size: 22px;
 }
 .prose code {
-  font-size: 0.8em;
+  font-size: 0.9em;
   background: var(--surface);
   padding: 3px 5px;
   border-radius: 2px;
@@ -595,7 +618,7 @@ footer a {
   padding: 22px;
   border: 1px solid var(--border);
   overflow-x: auto;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.75;
 }
 .prose pre code {
@@ -613,7 +636,7 @@ footer a {
   display: block;
   overflow-x: auto;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 16px;
 }
 .prose td,
 .prose th {
@@ -631,7 +654,7 @@ footer a {
   margin-inline: auto;
 }
 .prose figcaption {
-  font-size: 12px;
+  font-size: 16px;
   color: var(--muted);
   text-align: center;
   margin-top: 12px;
@@ -698,7 +721,7 @@ footer a {
     align-items: start;
   }
   .section-heading > a {
-    font-size: 12px;
+    font-size: 16px;
     padding-top: 5px;
     white-space: nowrap;
   }
@@ -720,9 +743,6 @@ footer a {
   .portrait {
     width: 150px;
     height: 150px;
-  }
-  .about-copy > p {
-    font-size: 16px;
   }
   .cv-section {
     grid-template-columns: 1fr;
@@ -747,7 +767,7 @@ footer a {
   .site-header nav {
     justify-content: space-between;
     gap: 12px;
-    font-size: 13px;
+    font-size: 16px;
   }
   .intro h1 {
     font-size: 64px;
@@ -757,15 +777,16 @@ footer a {
     gap: 10px;
   }
   .publication h3 {
-    font-size: 17px;
+    font-size: 20px;
   }
   .publication,
   .year-group .publication {
     grid-template-columns: 1fr;
     gap: 7px;
   }
-  .pub-marker {
-    font-size: 11px;
+  .news-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
   .about-intro {
     grid-template-columns: 1fr;
@@ -773,9 +794,10 @@ footer a {
   .portrait {
     width: 180px;
     height: 180px;
+    justify-self: center;
   }
   .prose {
-    font-size: 17px;
+    font-size: 18px;
   }
   footer.shell {
     flex-direction: column;

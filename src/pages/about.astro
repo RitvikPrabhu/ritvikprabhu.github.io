@@ -13,7 +13,7 @@ import {
 } from "../data/experience";
 ---
 
-<Base title="About" description={site.about[0]}>
+<Base title="About" description={site.about}>
   <div class="page-heading">
     <h1>
       About<span class="accent">.</span>
@@ -31,9 +31,7 @@ import {
       loading="eager"
     />
     <div class="about-copy">
-      {site.about.map((paragraph) => (
-        <p>{paragraph}</p>
-      ))}
+      <p>{site.about}</p>
       <ProfileLinks />
     </div>
   </section>
@@ -84,11 +82,6 @@ import {
             <p class="role">{entry.role}</p>
             <p class="location">{entry.location}</p>
             <p class="summary">{entry.summary}</p>
-            <ul>
-              {entry.details.map((detail) => (
-                <li>{detail}</li>
-              ))}
-            </ul>
           </article>
         ))}
       </div>

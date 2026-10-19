@@ -39,7 +39,7 @@ Edit `src/data/publications.json`. This is the only publication source; Astro va
 }
 ```
 
-Entries are ordered by descending year, then ascending `sortOrder`. Home shows up to three `selected` entries, or the three latest if none are selected. The full page groups everything by year. Any nonempty link label/URL in `links` is rendered, including Paper, Code, arXiv, Slides, or BibTeX URLs. Optional top-level `doi` (bare DOI), `arxiv`, `paper`, `code`, `slides`, `bibtex` (citation text), `award`, and `pdfPath` (local `/papers/file.pdf`) are also supported. Do not duplicate links in both forms. Empty optional fields should be omitted.
+Entries are ordered by descending year, then ascending `sortOrder`. Home always shows the three most recent entries. The full page groups everything by year. Any nonempty link label/URL in `links` is rendered, including Paper, Code, arXiv, Slides, or BibTeX URLs. Optional top-level `doi` (bare DOI), `arxiv`, `paper`, `code`, `slides`, `bibtex` (citation text), `award`, and `pdfPath` (local `/papers/file.pdf`) are also supported. Do not duplicate links in both forms. Empty optional fields should be omitted.
 
 `summary` appears behind a native, keyboard-accessible disclosure. A longer `abstract` is used only with `abstractReviewed: true`; otherwise the summary is used. Original areas, methods, systems, keywords, category, ordering, and short titles remain in the data even when not shown in the text-first UI.
 
@@ -66,9 +66,9 @@ The single `example.mdx` is visibly labeled, `noindex`, and excluded from regula
 
 ## Profile, About, and design
 
-- `src/data/site.ts`: name, homepage introduction, About biography paragraphs, contact/profile URLs, location, and optional CV URL.
-- `src/data/experience.ts`: research, internships, education, awards/recognition, and professional service. About information was updated from the owner-provided resume; edit these arrays to keep it current.
-- `src/data/news.json`: archived original news items; no longer displayed on About.
+- `src/data/site.ts`: name, homepage introduction, single-paragraph About biography, contact/profile URLs, location, and optional CV URL. Email is `ritvikp@vt.edu`.
+- `src/data/experience.ts`: research, internships, education, awards/recognition, and professional service. About displays a short `summary` for each role. Original detail bullets remain in the data for reference but are not rendered.
+- `src/data/news.json`: homepage news, most recent first; Home displays up to three items.
 - `src/pages/about.astro`: About layout; content comes from the data files above. Expected graduation dates and award nominations are explicitly labeled, and unknown dates are omitted.
 - `src/assets/portrait.jpg`: preserved original portrait, optimized by Astro at build time.
 - `src/styles/global.css`: semantic light/dark colors, width/spacing/type tokens, responsive layouts, prose, reduced motion.
@@ -77,7 +77,7 @@ The single `example.mdx` is visibly labeled, `noindex`, and excluded from regula
 
 No CV document existed in the original repository. To add one, place it at `public/cv.pdf` and set `site.cv` to `/cv.pdf`; it automatically appears in the navigation and profile links. Do not add an empty document or dead link.
 
-The interface uses system sans-serif and platform serif fonts (no font network requests), one teal accent, native disclosure controls, and minimal JavaScript. Theme follows the OS until explicitly changed; explicit preference persists. Core content and navigation work without JavaScript. Animations honor reduced motion.
+The interface uses system sans-serif and platform serif fonts (no font network requests), one teal accent, native disclosure controls, and minimal JavaScript. Body text is 18px and secondary text is at least 16px. `ProfileLinks.astro` reuses the original site's inline SVG icons with accessible names and 44px targets. Theme follows the OS until explicitly changed; explicit preference persists. The homepage greeting types once, reserves its full layout, and appears immediately with reduced motion or without JavaScript. Other animations also honor reduced motion.
 
 ## Deployment
 
@@ -87,6 +87,6 @@ Old `/experience.html` and `/publications.html` links remain as small static red
 
 ## Migration notes and references
 
-All seven original publications and their metadata/URLs, six experience entries, three news items, profile links, email, and portrait were migrated. Scholar and LinkedIn URLs came from the old HTML (the old profile JSON contained placeholders). About was subsequently updated from the owner-provided resume: it now includes DSSL, separate 2025 and 2026 Oak Ridge internships, Synergy’s July 2026 end date, degree details, awards, and service. Embedded resume hyperlinks were retained on the corresponding entries. After owner review, Education leads the CV sections, jump links provide section navigation, and the news section was removed (its original data is archived). The uploaded resume PDF itself is not published. Publication records remain unchanged, including the original IPDPS “To appear” status.
+All seven original publications and their metadata/URLs, six experience entries, three news items, profile links, email, and portrait were migrated. Scholar and LinkedIn URLs came from the old HTML (the old profile JSON contained placeholders). About was subsequently updated from the owner-provided resume: it now includes DSSL, separate 2025 and 2026 Oak Ridge internships, Synergy’s July 2026 end date, degree details, awards, and service. Embedded resume hyperlinks were retained on the corresponding entries. After owner review, Education leads the CV sections, jump links provide section navigation, experience is summarized without bullets, and news is shown on Home rather than About. The uploaded resume PDF itself is not published. The IPDPS 2026 record now links to IEEE Xplore document 11575339 and is marked Published, verified against the publisher's record (DOI 10.1109/IPDPS65963.2026.00035).
 
 Design/architecture references: [Tanuj Ravi Rao](https://tansanrao.com/) and [Astro MultiPage Portfolio](https://github.com/tomcomtang/astro-multiplepage-portfolio). The implementation is original: it borrows the ideas of small dedicated pages, shared layouts, and text-first content, not reference text, CSS, artwork, or digital-garden features. Tailwind and template client-side post rendering were unnecessary for this small CSS-token-based design.
