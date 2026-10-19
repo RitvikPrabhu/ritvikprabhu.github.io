@@ -135,11 +135,15 @@ export const education = [
       "Thesis: Sparsity-Driven Search for Multi-Hit Genetic Mutation Combinations in Cancer.",
   },
   {
-    degree:
-      "BS in Computer Science; BS in Computational Modeling & Data Analytics",
+    degree: "BS in Computer Science",
     date: "May 2023",
     gpa: "3.74",
-    details: "Minor in Mathematics.",
+    details: "",
+  },
+  {
+    degree: "BS in Computational Modeling & Data Analytics",
+    date: "May 2023",
+    details: "Minor: Mathematics",
   },
 ];
 

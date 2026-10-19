@@ -305,7 +305,7 @@ main:focus {
   border-top: 1px solid var(--border);
 }
 .publication {
-  padding-block: 24px;
+  padding-block: 24px 12px;
   border-bottom: 1px solid var(--border);
 }
 .publication.compact {
@@ -380,7 +380,6 @@ main:focus {
   font-size: 18px;
   color: var(--muted);
   max-width: 550px;
-  padding-bottom: 6px;
 }
 .page-heading {
   padding-block: 76px 60px;
@@ -405,7 +404,7 @@ main:focus {
   gap: 32px;
   padding-top: 28px;
   border-top: 1px solid var(--border);
-  margin-bottom: 48px;
+  margin-bottom: 24px;
 }
 .year-group > h2 {
   font-size: 30px;
@@ -545,14 +544,17 @@ main:focus {
   gap: 40px;
   padding-top: 30px;
   border-top: 1px solid var(--border);
-  margin-bottom: 64px;
+  margin-bottom: 24px;
 }
 .cv-section > h2 {
   font-size: 26px;
   scroll-margin-top: 32px;
 }
 .experience {
-  padding-bottom: 28px;
+  padding-bottom: 16px;
+}
+.experience:last-child {
+  padding-bottom: 0;
 }
 .experience + .experience {
   border-top: 1px solid var(--border);
@@ -582,7 +584,7 @@ footer.shell {
   justify-content: space-between;
   gap: 24px;
   border-top: 1px solid var(--border);
-  margin-top: 90px;
+  margin-top: 32px;
   padding-block: 25px 36px;
   color: var(--muted);
   font-size: 18px;

@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import portrait from "../assets/portrait.jpg";
+import portrait from "../assets/portrait-frontier.jpg";
 import Base from "../layouts/BaseLayout.astro";
 import ProfileLinks from "../components/ProfileLinks.astro";
 import { site } from "../data/site";
@@ -23,7 +23,7 @@ import {
     <Image
       class="portrait"
       src={portrait}
-      alt="Ritvik Prabhu"
+      alt="Ritvik Prabhu beside the Frontier supercomputer at Oak Ridge National Laboratory"
       widths={[230, 460]}
       sizes="(max-width: 480px) 180px, (max-width: 760px) 150px, 230px"
       width={460}
@@ -53,7 +53,7 @@ import {
           <h3>{entry.degree}</h3>
           <p class="role">Virginia Tech</p>
           <p class="location">{site.location}</p>
-          <p class="summary">{entry.details}</p>
+          {entry.details && <p class="summary">{entry.details}</p>}
         </article>
       ))}
     </div>

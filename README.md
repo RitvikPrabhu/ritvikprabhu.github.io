@@ -81,7 +81,7 @@ Both search interfaces keep result counts screen-reader-only, with compact spaci
 - `src/data/experience.ts`: research, work experience, education, awards/recognition, and professional service. About displays a short, non-first-person `summary` for each role. Original detail bullets and GPAs remain in the data for reference but are not rendered. The Work experience section retains its original `#internships` anchor so existing links still work.
 - `src/data/news.json`: homepage news, most recent first; Home displays up to three items.
 - `src/pages/about.astro`: About layout; content comes from the data files above. Expected graduation dates and award nominations are explicitly labeled, and unknown dates are omitted.
-- `src/assets/portrait.jpg`: preserved original portrait, optimized by Astro at build time.
+- `src/assets/portrait-frontier.jpg`: current About photo supplied by the owner, cropped for the circular portrait and optimized by Astro at build time. The original `src/assets/portrait.jpg` remains available as an asset.
 - `src/styles/global.css`: semantic light/dark colors, width/spacing/type tokens, responsive layouts, prose, reduced motion.
 - `src/layouts/BaseLayout.astro`: shared document, navigation, metadata, footer, theme, and Astro page transitions.
 - `public/social.png` and `public/favicon.svg`: social preview and favicon.
