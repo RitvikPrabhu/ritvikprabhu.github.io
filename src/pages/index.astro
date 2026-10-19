@@ -56,18 +56,15 @@ const posts = (await writing()).slice(0, 3);
   </section>
   <section class="home-section" aria-labelledby="writing-title">
     <div class="section-heading">
-      <h2 id="writing-title">Latest posts</h2>
+      <h2 id="writing-title">Latest blogs</h2>
       <a class="text-link" href="/writing/">
-        All posts <span aria-hidden="true">→</span>
+        All blogs <span aria-hidden="true">→</span>
       </a>
     </div>
     {posts.length ? (
       <PostList posts={posts} />
     ) : (
-      <p class="empty-state">
-        No articles published yet. Future technical and research writing will
-        appear here.
-      </p>
+      <p class="empty-state">No blogs published yet.</p>
     )}
   </section>
 </Base>

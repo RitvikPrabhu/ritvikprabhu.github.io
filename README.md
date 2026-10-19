@@ -86,7 +86,7 @@ Both search interfaces keep result counts screen-reader-only, with compact spaci
 - `src/layouts/BaseLayout.astro`: shared document, navigation, metadata, footer, theme, and Astro page transitions.
 - `public/social.png` and `public/favicon.svg`: social preview and favicon.
 
-The favicon is a path-based lowercase **r** with a square full stop, in warm ivory on the site's teal. It uses no font or external assets, so its letterform is consistent across browsers.
+The favicon is a handwritten **rp** drawn as SVG paths on a transparent background, without an enclosing tile. It switches from charcoal to warm ivory for dark browser themes using `prefers-color-scheme`. It uses no font or external assets, so its letterform is consistent across browsers.
 
 External profile, publication, and About links open in a new tab with `noopener noreferrer`. Markdown/MDX external web links use the same behavior automatically. Internal navigation and article anchors stay in the current tab, and email links use the mail app. CV and publication documents also open separately.
 
