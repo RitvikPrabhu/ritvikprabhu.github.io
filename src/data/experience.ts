@@ -177,23 +177,34 @@ export const honors = [
 
 export const service = [
   {
+    role: "Student Volunteer",
+    venue:
+      "International Conference for High Performance Computing, Networking, Storage, and Analysis (SC26)",
+    year: "2026",
+    url: "https://sc26.supercomputing.org/",
+  },
+  {
     role: "Web Chair",
     venue: "IEEE International Conference on Cluster Computing (CLUSTER)",
     year: "2026",
+    url: "https://clustercomp.org/2026/",
   },
   {
     role: "Student Volunteer",
     venue: "IEEE International Conference on Cluster Computing (CLUSTER)",
     year: "2026",
+    url: "https://clustercomp.org/2026/",
   },
   {
     role: "Student Volunteer",
     venue: "International Parallel & Distributed Processing Symposium (IPDPS)",
     year: "2026",
+    url: "https://www.ipdps.org/ipdps2026/index.html",
   },
   {
     role: "Student Volunteer",
     venue: "IEEE International Conference on Parallel Processing (ICPP)",
     year: "2025",
+    url: "https://icpp2025.sdsc.edu/",
   },
 ];

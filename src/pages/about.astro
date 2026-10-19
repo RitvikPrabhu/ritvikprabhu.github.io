@@ -118,7 +118,11 @@ import {
         <article class="experience">
           <p class="dates">{entry.year}</p>
           <h3>{entry.role}</h3>
-          <p class="role">{entry.venue}</p>
+          <p class="role">
+            <a href={entry.url} target="_blank" rel="noopener noreferrer">
+              {entry.venue} <span aria-hidden="true">↗</span>
+            </a>
+          </p>
         </article>
       ))}
     </div>
