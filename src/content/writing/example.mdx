@@ -1,0 +1,68 @@
+---
+title: "An article format reference"
+description: "A clearly labeled example of Markdown, mathematics, code, and figures on this site."
+published: 2026-10-18
+draft: true
+example: true
+tags: [Site example]
+thumbnail:
+  src: ../../../public/social.png
+  alt: "Ritvik Prabhu site identity, used as an example thumbnail"
+---
+
+import { Image } from "astro:assets";
+import portrait from "../../assets/portrait.jpg";
+
+This page demonstrates the publishing system. It is **not a research article**, and none of its example text is presented as Ritvik’s writing. Delete this file when it is no longer useful.
+
+## Writing in Markdown
+
+An article begins with frontmatter and ordinary Markdown. Short paragraphs, descriptive headings, and links give long-form work a readable structure. An [internal link to the publications page](/publications/) works without client-side JavaScript.
+
+> A blockquote sets a passage apart without interrupting the reading flow.
+
+## Code and computation
+
+Code blocks use build-time syntax highlighting, with separate light and dark palettes.
+
+```python
+def speedup(serial_time: float, parallel_time: float) -> float:
+    """Compare runtimes measured on the same workload."""
+    return serial_time / parallel_time
+
+print(speedup(12.0, 3.0))  # 4.0
+```
+
+Inline mathematics such as $S(p) = T(1) / T(p)$ and display equations are supported with KaTeX:
+
+$$
+S(p) = \frac{1}{(1-f) + f/p}
+$$
+
+Here, $f$ is the parallelizable fraction and $p$ is the processor count. This is a typesetting example, not a performance claim.
+
+## Tables and figures
+
+Tables stay within the reading column and scroll horizontally when necessary.
+
+| Format   | File extension | Use                            |
+| :------- | :------------- | :----------------------------- |
+| Markdown | `.md`          | Text, code, math, and tables   |
+| MDX      | `.mdx`         | Markdown with Astro components |
+
+<figure>
+  <Image src={portrait} alt="Ritvik Prabhu" width={420} />
+  <figcaption>
+    The existing site portrait, used here to demonstrate an optimized image and
+    caption.
+  </figcaption>
+</figure>
+
+## Publishing a real post
+
+1. Create a file in `src/content/writing/`.
+2. Set its title, description, and publication date.
+3. Write the article, starting section headings at level two.
+4. Keep `draft: true` until it is ready. Drafts have no public route.
+
+Example pages are omitted from the normal writing list and RSS. Real posts do not need the `example` field.

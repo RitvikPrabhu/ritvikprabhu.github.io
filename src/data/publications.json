@@ -3,25 +3,21 @@
     "id": "genomic-needles-ipdps-2026",
     "type": "publication",
     "category": "Papers",
+    "publicationType": "Conference",
     "title": "Looking for (Genomic) Needles in a Haystack: Sparsity-Driven Search for Identifying Correlated Genetic Mutations in Cancer",
     "year": 2026,
     "venue": "IEEE International Parallel & Distributed Processing Symposium (IPDPS)",
-    "status": "To appear",
+    "status": "Published",
     "authors": "R Prabhu, E Vatai, B Moussad, E Jeannot, R Anandakrishnan, W Feng, M Wahib",
     "summary": "Uses sparsity-driven pruned depth-first search to make multi-hit cancer mutation search feasible at large scale.",
     "abstract": "Uses sparsity-driven pruned depth-first search to make multi-hit cancer mutation search feasible at large scale.",
-    "areas": [
-      "Scientific HPC"
-    ],
+    "areas": ["Scientific HPC"],
     "methods": [
       "Sparse Search",
       "MPI Work Stealing",
       "Hierarchical Parallelism"
     ],
-    "systems": [
-      "MPI",
-      "HPC Clusters"
-    ],
+    "systems": ["MPI", "HPC Clusters"],
     "keywords": [
       "genomics",
       "carcinogenesis",
@@ -34,7 +30,7 @@
       "load balance"
     ],
     "links": {
-      "arxiv": "https://arxiv.org/abs/2603.16721"
+      "IEEE Xplore": "https://ieeexplore.ieee.org/document/11575339"
     },
     "sortOrder": 0,
     "shortTitle": "Mutation Search",
@@ -45,6 +41,7 @@
     "id": "researchbot-botse-2025",
     "type": "publication",
     "category": "Workshop Papers",
+    "publicationType": "Workshop",
     "title": "ResearchBot: Bridging the Gap between Academic Research and Practical Programming Communities",
     "year": 2025,
     "venue": "IEEE/ACM International Workshop on Bots in Software Engineering (BotSE)",
@@ -52,17 +49,9 @@
     "authors": "S Farzanepour, S Rajeev, H Liang, R Prabhu, C Brown",
     "summary": "Builds a modular bot that retrieves and summarizes academic papers to answer practical software-engineering questions.",
     "abstract": "Builds a modular bot that retrieves and summarizes academic papers to answer practical software-engineering questions.",
-    "areas": [
-      "Research Tools"
-    ],
-    "methods": [
-      "Software Bots",
-      "Programmer Support"
-    ],
-    "systems": [
-      "GitHub",
-      "Developer Communities"
-    ],
+    "areas": ["Research Tools"],
+    "methods": ["Software Bots", "Programmer Support"],
+    "systems": ["GitHub", "Developer Communities"],
     "keywords": [
       "bots",
       "software engineering",
@@ -82,6 +71,7 @@
     "id": "arrow-vs-mpi-hpec-2025",
     "type": "publication",
     "category": "Papers",
+    "publicationType": "Conference",
     "title": "Balancing Performance and Productivity: A Comparative Study of Apache Arrow vs. MPI",
     "year": 2025,
     "venue": "2025 IEEE High Performance Extreme Computing Conference (HPEC), 1\u20137",
@@ -89,18 +79,9 @@
     "authors": "R Prabhu, W Feng",
     "summary": "Compares MPI/C, MPI/Python, and Python-based Apache Arrow implementations to study performance, scalability, and developer productivity tradeoffs.",
     "abstract": "Compares MPI/C, MPI/Python, and Python-based Apache Arrow implementations to study performance, scalability, and developer productivity tradeoffs.",
-    "areas": [
-      "Data Systems"
-    ],
-    "methods": [
-      "Communication",
-      "Serialization",
-      "Productivity Analysis"
-    ],
-    "systems": [
-      "Apache Arrow",
-      "MPI"
-    ],
+    "areas": ["Data Systems"],
+    "methods": ["Communication", "Serialization", "Productivity Analysis"],
+    "systems": ["Apache Arrow", "MPI"],
     "keywords": [
       "Apache Arrow",
       "MPI",
@@ -110,7 +91,7 @@
       "columnar layout",
       "HPC"
     ],
-    "links": {"IEEE Xplore": "https://ieeexplore.ieee.org/document/11196398"},
+    "links": { "IEEE Xplore": "https://ieeexplore.ieee.org/document/11196398" },
     "pdfPath": "",
     "sortOrder": 2,
     "shortTitle": "Arrow / MPI",
@@ -121,6 +102,7 @@
     "id": "ct-image-enhancement-trpms-2024",
     "type": "publication",
     "category": "Papers",
+    "publicationType": "Journal",
     "title": "Improved 2-D Chest CT Image Enhancement with Multi-Level VGG Loss",
     "year": 2024,
     "venue": "IEEE Transactions on Radiation and Plasma Medical Sciences 9(3), 304\u2013312",
@@ -128,18 +110,9 @@
     "authors": "A Chaturvedi, R Prabhu, M Yadav, WC Feng, G Cao",
     "summary": "Uses multi-level VGG loss to improve low-dose chest CT image enhancement for clearer diagnostic images.",
     "abstract": "Uses multi-level VGG loss to improve low-dose chest CT image enhancement for clearer diagnostic images.",
-    "areas": [
-      "Biomedical Imaging"
-    ],
-    "methods": [
-      "VGG Loss",
-      "CT Enhancement",
-      "Deep Learning"
-    ],
-    "systems": [
-      "PyTorch",
-      "Medical Imaging"
-    ],
+    "areas": ["Biomedical Imaging"],
+    "methods": ["VGG Loss", "CT Enhancement", "Deep Learning"],
+    "systems": ["PyTorch", "Medical Imaging"],
     "keywords": [
       "CT image enhancement",
       "VGG loss",
@@ -160,6 +133,7 @@
     "id": "sparkleblast-hpec-2024",
     "type": "publication",
     "category": "Papers",
+    "publicationType": "Conference",
     "title": "On the Scalability of Computing Genomic Diversity Using SparkLeBLAST: A Feasibility Study",
     "year": 2024,
     "venue": "2024 IEEE High Performance Extreme Computing Conference (HPEC), 1\u20138",
@@ -167,19 +141,13 @@
     "authors": "R Prabhu, B Moussad, K Youssef, E Vatai, W Feng",
     "summary": "Models and evaluates SparkLeBLAST scalability for COVID-19 genomic diversity analysis on Fugaku-scale systems.",
     "abstract": "Models and evaluates SparkLeBLAST scalability for COVID-19 genomic diversity analysis on Fugaku-scale systems.",
-    "areas": [
-      "Scientific HPC"
-    ],
+    "areas": ["Scientific HPC"],
     "methods": [
       "Genomic Diversity",
       "Scalability Analysis",
       "Spark-based Analytics"
     ],
-    "systems": [
-      "SparkLeBLAST",
-      "A64FX",
-      "Fugaku"
-    ],
+    "systems": ["SparkLeBLAST", "A64FX", "Fugaku"],
     "keywords": [
       "SparkLeBLAST",
       "genomics",
@@ -203,6 +171,7 @@
     "id": "explainable-projections-isvc-2022",
     "type": "publication",
     "category": "Papers",
+    "publicationType": "Conference",
     "title": "Explainable Interactive Projections for Image Data",
     "year": 2022,
     "venue": "International Symposium on Visual Computing, 77\u201390",
@@ -210,18 +179,9 @@
     "authors": "H Han, R Faust, BFK Norambuena, R Prabhu, T Smith, S Li, C North",
     "summary": "Combines interactive dimensionality reduction with visual explanations so users can reshape and understand image projections.",
     "abstract": "Combines interactive dimensionality reduction with visual explanations so users can reshape and understand image projections.",
-    "areas": [
-      "Interactive ML / Visualization"
-    ],
-    "methods": [
-      "Interactive Projection",
-      "Explainable AI",
-      "Visual Analytics"
-    ],
-    "systems": [
-      "Andromeda",
-      "Human-in-the-loop ML"
-    ],
+    "areas": ["Interactive ML / Visualization"],
+    "methods": ["Interactive Projection", "Explainable AI", "Visual Analytics"],
+    "systems": ["Andromeda", "Human-in-the-loop ML"],
     "keywords": [
       "interactive projections",
       "explainability",
@@ -242,6 +202,7 @@
     "id": "plant-phenotypes-nappn-2022",
     "type": "publication",
     "category": "Papers",
+    "publicationType": "Conference",
     "title": "Interactive Deep Learning for Sorting Plant Images by Visual Phenotypes",
     "year": 2022,
     "venue": "NAPPN Annual Conference",
@@ -249,18 +210,13 @@
     "authors": "H Han, R Prabhu, T Smith, K Dhakal, X Wei, S Li, C North",
     "summary": "Uses Andromeda to let domain experts sort plant images by visual phenotype through interactive deep learning.",
     "abstract": "Uses Andromeda to let domain experts sort plant images by visual phenotype through interactive deep learning.",
-    "areas": [
-      "Interactive ML / Visualization"
-    ],
+    "areas": ["Interactive ML / Visualization"],
     "methods": [
       "Interactive Deep Learning",
       "Visual Phenotypes",
       "Image Sorting"
     ],
-    "systems": [
-      "Andromeda",
-      "Computer Vision"
-    ],
+    "systems": ["Andromeda", "Computer Vision"],
     "keywords": [
       "interactive deep learning",
       "plant phenotypes",

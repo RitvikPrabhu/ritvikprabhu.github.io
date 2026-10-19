@@ -1,0 +1,110 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import ProfileLinks from "../components/ProfileLinks.astro";
+import Publication from "../components/Publication.astro";
+import PostList from "../components/PostList.astro";
+import { publications, writing } from "../data/content";
+import { site } from "../data/site";
+import news from "../data/news.json";
+const recent = (await publications()).slice(0, 3);
+const posts = (await writing()).slice(0, 3);
+---
+
+<Base>
+  <section class="intro">
+    <div>
+      <h1 id="typed-headline" class="typed" aria-label="Hi, I’m Ritvik.">
+        {["Hi, I’m", "Ritvik."].map((line) => (
+          <span class="typed-line" aria-hidden="true">
+            <span class="typed-reserve">{line}</span>
+            <span class="typed-ink">{line}</span>
+          </span>
+        ))}
+      </h1>
+    </div>
+    <div class="intro-copy">
+      <p>{site.introduction}</p>
+      <a class="text-link intro-about" href="/about/">
+        More about me <span aria-hidden="true">→</span>
+      </a>
+      <ProfileLinks />
+    </div>
+  </section>
+  <section class="home-section" aria-labelledby="news-title">
+    <div class="section-heading">
+      <h2 id="news-title">Recent news</h2>
+    </div>
+    <div class="news-list">
+      {news.slice(0, 3).map((item) => (
+        <div class="news-row">
+          <p class="news-date">{item.date}</p>
+          <p>{item.title}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+  <section class="home-section" aria-labelledby="publications-title">
+    <div class="section-heading">
+      <h2 id="publications-title">Recent publications</h2>
+      <a class="text-link" href="/publications/">
+        All publications <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    {recent.map((publication) => (
+      <Publication publication={publication} compact />
+    ))}
+  </section>
+  <section class="home-section" aria-labelledby="writing-title">
+    <div class="section-heading">
+      <h2 id="writing-title">Latest posts</h2>
+      <a class="text-link" href="/writing/">
+        All posts <span aria-hidden="true">→</span>
+      </a>
+    </div>
+    {posts.length ? (
+      <PostList posts={posts} />
+    ) : (
+      <p class="empty-state">
+        No articles published yet. Future technical and research writing will
+        appear here.
+      </p>
+    )}
+  </section>
+</Base>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const heading = document.querySelector("#typed-headline");
+    const motion = matchMedia("(prefers-reduced-motion: reduce)");
+    if (!heading || motion.matches) return;
+    heading.classList.remove("typed");
+    const lines = [...heading.querySelectorAll<HTMLElement>(".typed-ink")];
+    const text = lines.map((line) => line.textContent || "");
+    lines.forEach((line) => (line.textContent = ""));
+    let frame: number;
+    const start = performance.now();
+    const length = text.join("").length;
+    function type(now: number) {
+      let remaining = motion.matches
+        ? length
+        : Math.max(0, Math.floor((now - start - 200) / 65));
+      const complete = remaining >= length;
+      lines.forEach((line, i) => {
+        line.textContent = text[i].slice(0, Math.max(0, remaining));
+        line.classList.toggle(
+          "typing",
+          !complete && remaining >= 0 && remaining < text[i].length,
+        );
+        remaining = Math.max(-1, remaining - text[i].length);
+      });
+      if (complete) heading!.classList.add("typed");
+      else frame = requestAnimationFrame(type);
+    }
+    frame = requestAnimationFrame(type);
+    document.addEventListener(
+      "astro:before-swap",
+      () => cancelAnimationFrame(frame),
+      { once: true },
+    );
+  });
+</script>

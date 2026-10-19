@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ritvikprabhu.github.io/sitemap-index.xml
