@@ -4,7 +4,7 @@ import { site } from "../data/site";
 import type { APIContext } from "astro";
 export async function GET(context: APIContext) {
   return rss({
-    title: `${site.name} — Writing`,
+    title: `${site.name} — Blog`,
     description: site.description,
     site: context.site!,
     items: (await writing()).map((p) => ({

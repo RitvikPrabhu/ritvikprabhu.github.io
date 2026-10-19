@@ -1,26 +1,39 @@
 ---
 import Base from "../../layouts/BaseLayout.astro";
 import PostList from "../../components/PostList.astro";
+import ContentFilters from "../../components/ContentFilters.astro";
 import { writing } from "../../data/content";
 const posts = await writing();
 const years = [...new Set(posts.map((p) => p.data.published.getUTCFullYear()))];
+const tags = [...new Set(posts.flatMap((p) => p.data.tags))].sort();
 ---
 
 <Base
-  title="Writing"
+  title="Blog"
   description="Technical and research writing by Ritvik Prabhu."
 >
-  <div class="page-heading">
+  <div class="page-heading listing-heading">
     <h1>
-      Writing<span class="accent">.</span>
+      Blog<span class="accent">.</span>
     </h1>
-    <p>Technical and research writing.</p>
+    <ContentFilters
+      label="Search posts"
+      placeholder="Title, description or topic"
+      groupLabel="Blog topics"
+      options={tags}
+      count={posts.length}
+      noun="post"
+    />
   </div>
+  <p class="filter-empty" hidden>
+    No posts match. Try another search or topic.
+  </p>
   {posts.length ? (
     years.map((year) => (
-      <section class="year-group">
+      <section class="year-group" data-filter-group>
         <h2>{year}</h2>
         <PostList
+          filterable
           posts={posts.filter(
             (p) => p.data.published.getUTCFullYear() === year,
           )}
@@ -37,12 +50,4 @@ const years = [...new Set(posts.map((p) => p.data.published.getUTCFullYear()))];
       </p>
     </div>
   )}
-  <aside class="example-note">
-    <span>Site example</span>
-    <p>
-      <a href="/writing/example/">An article format reference →</a>
-      <br />A demonstration of the blog’s typography and features—not a research
-      post by Ritvik.
-    </p>
-  </aside>
 </Base>

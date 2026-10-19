@@ -27,9 +27,16 @@ const links = {
 };
 ---
 
-<article class="publication" id={publication.id}>
-  <div class="pub-marker">{compact ? p.year : p.venueShort}</div>
+<article
+  class:list={["publication", { compact }]}
+  id={publication.id}
+  data-filter-entry={!compact || undefined}
+  data-filter-tags={JSON.stringify([p.publicationType])}
+  data-search={`${p.title} ${p.authors} ${p.venue} ${p.year} ${p.publicationType}`.toLowerCase()}
+>
+  {compact && <div class="pub-marker">{p.year}</div>}
   <div class="pub-body">
+    {!compact && <p class="pub-type">{p.publicationType}</p>}
     <h3>{p.title}</h3>
     <p class="authors">
       {authors.map((author) =>
@@ -53,12 +60,6 @@ const links = {
           <span aria-hidden="true"> ↗</span>
         </a>
       ))}
-      {!compact && (p.summary || (p.abstractReviewed && p.abstract)) && (
-        <details>
-          <summary>Summary</summary>
-          <p>{p.abstractReviewed && p.abstract ? p.abstract : p.summary}</p>
-        </details>
-      )}
       {!compact && p.bibtex && (
         <details>
           <summary>BibTeX</summary>

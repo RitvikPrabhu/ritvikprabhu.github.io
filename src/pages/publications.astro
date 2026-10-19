@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/BaseLayout.astro";
 import Publication from "../components/Publication.astro";
+import ContentFilters from "../components/ContentFilters.astro";
 import { publications } from "../data/content";
 const all = await publications();
 const years = [...new Set(all.map((p) => p.data.year))];
@@ -10,19 +11,28 @@ const years = [...new Set(all.map((p) => p.data.year))];
   title="Publications"
   description="Publications by Ritvik Prabhu in high-performance computing, data systems, medical imaging, and interactive machine learning."
 >
-  <div class="page-heading">
+  <div class="page-heading listing-heading">
     <h1>
       Publications<span class="accent">.</span>
     </h1>
-    <p>Scientific computing, data systems, and machine learning.</p>
-    <nav class="year-nav" aria-label="Publication years">
-      {years.map((year) => (
-        <a href={`#year-${year}`}>{year}</a>
-      ))}
-    </nav>
+    <ContentFilters
+      label="Search publications"
+      placeholder="Title, author, venue or type"
+      groupLabel="Publication type"
+      options={["Conference", "Journal", "Workshop"]}
+      count={all.length}
+      noun="publication"
+    />
   </div>
+  <p class="filter-empty" hidden>
+    No publications match. Try another search or type.
+  </p>
   {years.map((year) => (
-    <section class="year-group" aria-labelledby={`year-${year}`}>
+    <section
+      class="year-group"
+      data-filter-group
+      aria-labelledby={`year-${year}`}
+    >
       <h2 id={`year-${year}`}>{year}</h2>
       <div>
         {all

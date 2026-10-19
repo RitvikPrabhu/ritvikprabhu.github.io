@@ -1,0 +1,105 @@
+---
+interface Props {
+  label: string;
+  placeholder: string;
+  groupLabel: string;
+  options: string[];
+  count: number;
+  noun: string;
+}
+const { label, placeholder, groupLabel, options, count, noun } = Astro.props;
+---
+
+<div class="content-filters" data-noun={noun} hidden>
+  <label for="content-search">{label}</label>
+  <input id="content-search" type="search" placeholder={placeholder} />
+  <div class="filter-options" role="group" aria-label={groupLabel}>
+    {["All", ...options].map((option) => (
+      <button
+        type="button"
+        data-filter-type={option}
+        aria-pressed={option === "All"}
+      >
+        {option}
+      </button>
+    ))}
+    <button type="button" class="filter-reset">
+      Reset
+    </button>
+  </div>
+  <p
+    class="filter-count visually-hidden"
+    role="status"
+    aria-live="polite"
+    aria-atomic="true"
+  >
+    {`${count} ${noun}${count === 1 ? "" : "s"}`}
+  </p>
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const controls = document.querySelector<HTMLElement>(".content-filters");
+    const input = document.querySelector<HTMLInputElement>("#content-search");
+    if (!controls || !input) return;
+    const entries = [
+      ...document.querySelectorAll<HTMLElement>("[data-filter-entry]"),
+    ].map((element) => ({
+      element,
+      tags: JSON.parse(element.dataset.filterTags!) as string[],
+      search: element.dataset.search!,
+    }));
+    const groups = [
+      ...document.querySelectorAll<HTMLElement>("[data-filter-group]"),
+    ];
+    const buttons = [
+      ...controls.querySelectorAll<HTMLButtonElement>("[data-filter-type]"),
+    ];
+    const count = controls.querySelector<HTMLElement>(".filter-count")!;
+    const empty = document.querySelector<HTMLElement>(".filter-empty")!;
+    const noun = controls.dataset.noun!;
+    let selected = "All";
+    function filter() {
+      const terms = input!.value
+        .toLowerCase()
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean);
+      let visible = 0;
+      entries.forEach(({ element, tags, search }) => {
+        element.hidden =
+          (selected !== "All" && !tags.includes(selected)) ||
+          !terms.every((term) => search.includes(term));
+        if (!element.hidden) visible++;
+      });
+      groups.forEach((group) => {
+        group.hidden = !group.querySelector(
+          "[data-filter-entry]:not([hidden])",
+        );
+      });
+      buttons.forEach((button) =>
+        button.setAttribute(
+          "aria-pressed",
+          String(button.dataset.filterType === selected),
+        ),
+      );
+      count.textContent = `${visible} ${noun}${visible === 1 ? "" : "s"}`;
+      empty.hidden = visible > 0 || entries.length === 0;
+    }
+    input.addEventListener("input", filter);
+    buttons.forEach((button) =>
+      button.addEventListener("click", () => {
+        selected = button.dataset.filterType!;
+        filter();
+      }),
+    );
+    controls.querySelector(".filter-reset")!.addEventListener("click", () => {
+      selected = "All";
+      input.value = "";
+      filter();
+      input.focus();
+    });
+    controls.hidden = false;
+    filter();
+  });
+</script>

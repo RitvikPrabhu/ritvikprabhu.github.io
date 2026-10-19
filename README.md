@@ -26,6 +26,7 @@ Edit `src/data/publications.json`. This is the only publication source; Astro va
   "id": "short-stable-paper-id",
   "type": "publication",
   "category": "Papers",
+  "publicationType": "Conference",
   "title": "Paper title",
   "authors": "R Prabhu, A Collaborator",
   "year": 2026,
@@ -41,7 +42,9 @@ Edit `src/data/publications.json`. This is the only publication source; Astro va
 
 Entries are ordered by descending year, then ascending `sortOrder`. Home always shows the three most recent entries. The full page groups everything by year. Any nonempty link label/URL in `links` is rendered, including Paper, Code, arXiv, Slides, or BibTeX URLs. Optional top-level `doi` (bare DOI), `arxiv`, `paper`, `code`, `slides`, `bibtex` (citation text), `award`, and `pdfPath` (local `/papers/file.pdf`) are also supported. Do not duplicate links in both forms. Empty optional fields should be omitted.
 
-`summary` appears behind a native, keyboard-accessible disclosure. A longer `abstract` is used only with `abstractReviewed: true`; otherwise the summary is used. Original areas, methods, systems, keywords, category, ordering, and short titles remain in the data even when not shown in the text-first UI.
+Set `publicationType` to `Conference`, `Journal`, or `Workshop`. The Publications page displays these labels and offers keyboard-accessible type filters plus search across title, authors, venue, year, and type. Search terms combine with the selected type. Reset restores the complete list. With JavaScript disabled, all publications remain readable and the interactive controls stay hidden. Empty year groups are hidden when filtering; there is no separate year navigation.
+
+Publication summaries and abstracts are not displayed. Original summaries, abstracts, areas, methods, systems, keywords, category, ordering, and short titles remain in the data for reference. The full page has no venue abbreviation column; the full venue remains below each author list.
 
 ## Write a post
 
@@ -55,6 +58,10 @@ published: 2026-10-19
 # updated: 2026-10-20
 draft: true
 tags: [HPC, Systems]
+# Optional optimized listing thumbnail, relative to this Markdown file:
+# thumbnail:
+#   src: ../../assets/my-post.webp
+#   alt: "A description of the image"
 ---
 ```
 
@@ -62,12 +69,16 @@ Write the body below the frontmatter. Begin sections at `##`; the layout supplie
 
 Set `draft: false` when ready and commit. Drafts are excluded from generated routes, lists, sitemap, and RSS. The filename becomes the stable `/writing/my-post/` URL; dates do not change it. Dates are displayed in UTC to avoid calendar-day shifts. A table of contents appears when there are at least four level-two sections. Posts receive canonical and OpenGraph metadata automatically. RSS is `/rss.xml`.
 
-The single `example.mdx` is visibly labeled, `noindex`, and excluded from regular post lists, RSS, and sitemap. Remove it and its linked aside in `src/pages/writing/index.astro` when no longer needed. It is not attributed to Ritvik as a real post.
+The navigation and page title call this section **Blog**, while `/writing/` and article URLs stay unchanged. Tags become topic filters automatically. Search matches title, description, date, and topics, and combines with the selected topic. Reset clears both. The shared `ContentFilters.astro` supplies the same accessible behavior for publications and posts, with no client framework or search service.
+
+An optional `thumbnail` contains a local `src` and required descriptive `alt`. Astro validates and optimizes it, and rows without images stay text-only. The same post rows appear on Home and the Blog page. The single `example.mdx` demonstrates formatting and thumbnail frontmatter but remains a draft in the repository. It has no public route and never appears in listings, topic filters, RSS, or sitemap. No example content is displayed on the website.
+
+Both search interfaces keep result counts screen-reader-only, with compact spacing between filters and results.
 
 ## Profile, About, and design
 
 - `src/data/site.ts`: name, homepage introduction, single-paragraph About biography, contact/profile URLs, location, and optional CV URL. Email is `ritvikp@vt.edu`.
-- `src/data/experience.ts`: research, internships, education, awards/recognition, and professional service. About displays a short `summary` for each role. Original detail bullets remain in the data for reference but are not rendered.
+- `src/data/experience.ts`: research, work experience, education, awards/recognition, and professional service. About displays a short, non-first-person `summary` for each role. Original detail bullets and GPAs remain in the data for reference but are not rendered. The Work experience section retains its original `#internships` anchor so existing links still work.
 - `src/data/news.json`: homepage news, most recent first; Home displays up to three items.
 - `src/pages/about.astro`: About layout; content comes from the data files above. Expected graduation dates and award nominations are explicitly labeled, and unknown dates are omitted.
 - `src/assets/portrait.jpg`: preserved original portrait, optimized by Astro at build time.
@@ -77,7 +88,7 @@ The single `example.mdx` is visibly labeled, `noindex`, and excluded from regula
 
 No CV document existed in the original repository. To add one, place it at `public/cv.pdf` and set `site.cv` to `/cv.pdf`; it automatically appears in the navigation and profile links. Do not add an empty document or dead link.
 
-The interface uses system sans-serif and platform serif fonts (no font network requests), one teal accent, native disclosure controls, and minimal JavaScript. Body text is 18px and secondary text is at least 16px. `ProfileLinks.astro` reuses the original site's inline SVG icons with accessible names and 44px targets. Theme follows the OS until explicitly changed; explicit preference persists. The homepage greeting types once, reserves its full layout, and appears immediately with reduced motion or without JavaScript. Other animations also honor reduced motion.
+The interface uses system sans-serif and platform serif fonts (no font network requests), one teal accent, native controls, and minimal JavaScript. Regular text and metadata are at least 18px, and section links are 20px. `ProfileLinks.astro` reuses the original site's inline SVG icons with accessible names and 44px targets. Theme follows the OS until explicitly changed; explicit preference persists. The homepage greeting types once, reserves its full layout, and ends with a blinking cursor. Reduced motion shows the full greeting immediately with a static cursor. Other animations also honor reduced motion.
 
 ## Deployment
 

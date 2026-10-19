@@ -9,6 +9,7 @@ const publications = defineCollection({
     authors: z.string(),
     year: z.number().int(),
     venue: z.string(),
+    publicationType: z.enum(["Conference", "Journal", "Workshop"]),
     venueShort: z.string().optional(),
     status: z.string().optional(),
     summary: z.string().optional(),
@@ -36,14 +37,16 @@ const publications = defineCollection({
 });
 const writing = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/writing" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    published: z.coerce.date(),
-    updated: z.coerce.date().optional(),
-    draft: z.boolean().default(false),
-    example: z.boolean().default(false),
-    tags: z.array(z.string()).default([]),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      published: z.coerce.date(),
+      updated: z.coerce.date().optional(),
+      draft: z.boolean().default(false),
+      example: z.boolean().default(false),
+      tags: z.array(z.string()).default([]),
+      thumbnail: z.object({ src: image(), alt: z.string().min(1) }).optional(),
+    }),
 });
 export const collections = { publications, writing };

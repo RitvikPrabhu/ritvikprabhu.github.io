@@ -3,9 +3,9 @@ export const site = {
   description:
     "Computer Science PhD student at Virginia Tech working on high-performance computing systems for scalable scientific and machine-learning applications.",
   introduction:
-    "I’m a Computer Science PhD student at Virginia Tech working on high-performance computing systems for scalable scientific and machine-learning applications.",
+    "How do we make a computation practical when it outgrows one machine? That’s the question behind my research. I’m a Computer Science PhD student at Virginia Tech, working on high-performance computing and machine-learning systems.",
   about:
-    "I’m a Computer Science PhD student at Virginia Tech in the Distributed Systems & Storage Laboratory. I work on making large-scale machine learning more efficient, with a focus on transformer training and the systems that support it.",
+    "My research has taken me from finding cancer-linked mutations on supercomputers to training transformers across GPUs. I’m interested in what makes these computations practical at scale. At Virginia Tech’s Distributed Systems & Storage Laboratory, I’m pursuing a PhD in Computer Science and working on more efficient machine-learning systems.",
   location: "Blacksburg, Virginia",
   cv: "", // Add /cv.pdf here after placing the document in public/.
   links: [

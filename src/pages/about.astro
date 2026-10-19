@@ -38,7 +38,7 @@ import {
   <nav class="about-sections" aria-label="About sections">
     <a href="#education">Education</a>
     <a href="#research">Research</a>
-    <a href="#internships">Internships</a>
+    <a href="#internships">Work experience</a>
     <a href="#awards">Awards & recognition</a>
     <a href="#service">Professional service</a>
   </nav>
@@ -52,9 +52,7 @@ import {
           <p class="dates">{entry.date}</p>
           <h3>{entry.degree}</h3>
           <p class="role">Virginia Tech</p>
-          <p class="location">
-            {site.location} · Cumulative GPA: {entry.gpa}
-          </p>
+          <p class="location">{site.location}</p>
           <p class="summary">{entry.details}</p>
         </article>
       ))}
@@ -62,7 +60,7 @@ import {
   </section>
   {[
     { id: "research", title: "Research", entries: research },
-    { id: "internships", title: "Internships", entries: internships },
+    { id: "internships", title: "Work experience", entries: internships },
   ].map((section) => (
     <section class="cv-section" aria-labelledby={section.id}>
       <h2 id={section.id} tabindex="-1">
