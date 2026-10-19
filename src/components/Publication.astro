@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+interface Props {
+  publication: CollectionEntry<"publications">;
+  compact?: boolean;
+}
+const { publication, compact = false } = Astro.props;
+const p = publication.data;
+const authors = p.authors.split(/(R\.?\s+Prabhu|Ritvik Prabhu)/g);
+const links = {
+  ...p.links,
+  ...(p.pdfPath ? { PDF: p.pdfPath } : {}),
+  ...(p.doi ? { DOI: `https://doi.org/${p.doi}` } : {}),
+  ...Object.fromEntries(
+    ["paper", "code", "arxiv", "slides"].flatMap((key) => {
+      const value = p[key as "paper"];
+      return value
+        ? [
+            [
+              key === "arxiv" ? "arXiv" : key[0].toUpperCase() + key.slice(1),
+              value,
+            ],
+          ]
+        : [];
+    }),
+  ),
+};
+---
+
+<article class="publication" id={publication.id}>
+  <div class="pub-marker">{compact ? p.year : p.venueShort}</div>
+  <div class="pub-body">
+    <h3>{p.title}</h3>
+    <p class="authors">
+      {authors.map((author) =>
+        /^(R\.?\s+Prabhu|Ritvik Prabhu)$/.test(author) ? (
+          <strong>{author}</strong>
+        ) : (
+          author
+        ),
+      )}
+    </p>
+    <p class="venue">
+      {p.venue}
+      {!compact && ` · ${p.year}`}
+      {p.status && p.status !== "Published" && <span> · {p.status}</span>}
+    </p>
+    {p.award && <p class="award">{p.award}</p>}
+    <div class="pub-links">
+      {Object.entries(links).map(([label, href]) => (
+        <a href={href}>
+          {label.toLowerCase() === "arxiv" ? "arXiv" : label}
+          <span aria-hidden="true"> ↗</span>
+        </a>
+      ))}
+      {!compact && (p.summary || (p.abstractReviewed && p.abstract)) && (
+        <details>
+          <summary>Summary</summary>
+          <p>{p.abstractReviewed && p.abstract ? p.abstract : p.summary}</p>
+        </details>
+      )}
+      {!compact && p.bibtex && (
+        <details>
+          <summary>BibTeX</summary>
+          <pre>{p.bibtex}</pre>
+        </details>
+      )}
+    </div>
+  </div>
+</article>

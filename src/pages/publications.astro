@@ -1,0 +1,37 @@
+---
+import Base from "../layouts/BaseLayout.astro";
+import Publication from "../components/Publication.astro";
+import { publications } from "../data/content";
+const all = await publications();
+const years = [...new Set(all.map((p) => p.data.year))];
+---
+
+<Base
+  title="Publications"
+  description="Publications by Ritvik Prabhu in high-performance computing, data systems, medical imaging, and interactive machine learning."
+>
+  <div class="page-heading">
+    <p class="eyebrow">Research</p>
+    <h1>
+      Publications<span class="accent">.</span>
+    </h1>
+    <p>Scientific computing, data systems, and machine learning.</p>
+    <nav class="year-nav" aria-label="Publication years">
+      {years.map((year) => (
+        <a href={`#year-${year}`}>{year}</a>
+      ))}
+    </nav>
+  </div>
+  {years.map((year) => (
+    <section class="year-group" aria-labelledby={`year-${year}`}>
+      <h2 id={`year-${year}`}>{year}</h2>
+      <div>
+        {all
+          .filter((p) => p.data.year === year)
+          .map((publication) => (
+            <Publication publication={publication} />
+          ))}
+      </div>
+    </section>
+  ))}
+</Base>

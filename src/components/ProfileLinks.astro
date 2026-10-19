@@ -1,0 +1,13 @@
+---
+import { site } from "../data/site";
+---
+
+<div class="profile-links" aria-label="Contact and profiles">
+  {site.links.map((link) => (
+    <a href={link.href}>
+      {link.label}
+      <span aria-hidden="true"> ↗</span>
+    </a>
+  ))}
+  {site.cv && <a href={site.cv}>CV ↗</a>}
+</div>

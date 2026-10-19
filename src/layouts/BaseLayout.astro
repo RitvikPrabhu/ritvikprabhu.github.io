@@ -1,0 +1,201 @@
+---
+import { ClientRouter } from "astro:transitions";
+import { site } from "../data/site";
+import "../styles/global.css";
+interface Props {
+  title?: string;
+  description?: string;
+  article?: boolean;
+  published?: Date;
+  updated?: Date;
+  noindex?: boolean;
+}
+const {
+  title,
+  description = site.description,
+  article = false,
+  published,
+  updated,
+  noindex = false,
+} = Astro.props;
+const fullTitle = title
+  ? `${title} — ${site.name}`
+  : `${site.name} — Research & writing`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [
+  ["Home", "/"],
+  ["Publications", "/publications/"],
+  ["Writing", "/writing/"],
+  ["About", "/about/"],
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Ritvik Prabhu — Writing"
+      href="/rss.xml"
+    />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={article ? "article" : "website"} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={new URL("/social.png", Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Ritvik Prabhu — Research & writing"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    {published && (
+      <meta
+        property="article:published_time"
+        content={published.toISOString()}
+      />
+    )}
+    {updated && (
+      <meta property="article:modified_time" content={updated.toISOString()} />
+    )}
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <script is:inline>
+      function applyTheme() {
+        let theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch {}
+        document.documentElement.dataset.theme =
+          theme === "dark" || theme === "light"
+            ? theme
+            : matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+      }
+      applyTheme();
+      document.addEventListener("astro:after-swap", applyTheme);
+    </script>
+    <ClientRouter />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
+    <header class="site-header shell">
+      <a class="wordmark" href="/" aria-label="Ritvik Prabhu home">
+        ritvik<span>.</span>
+      </a>
+      <nav aria-label="Main navigation">
+        {nav.map(([label, href]) => (
+          <a
+            href={href}
+            aria-current={
+              (
+                href === "/"
+                  ? Astro.url.pathname === "/"
+                  : Astro.url.pathname.startsWith(href)
+              )
+                ? "page"
+                : undefined
+            }
+          >
+            {label}
+          </a>
+        ))}
+        {site.cv && <a href={site.cv}>CV ↗</a>}
+      </nav>
+      <button
+        class="theme-toggle"
+        aria-label="Switch to dark mode"
+        title="Switch color theme"
+      >
+        <svg
+          class="sun"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" />
+        </svg>
+        <svg
+          class="moon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z" />
+        </svg>
+      </button>
+    </header>
+    <main id="main" class="shell" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="shell">
+      <span>
+        © {new Date().getFullYear()} {site.name}
+      </span>
+      <div>
+        <a href={site.links.find((link) => link.label === "Email")?.href}>
+          Email ↗
+        </a>
+        <a href="/rss.xml">RSS ↗</a>
+      </div>
+    </footer>
+    <script>
+      function syncButton() {
+        const button =
+          document.querySelector<HTMLButtonElement>(".theme-toggle");
+        const dark = document.documentElement.dataset.theme === "dark";
+        button?.setAttribute(
+          "aria-label",
+          `Switch to ${dark ? "light" : "dark"} mode`,
+        );
+      }
+      document.addEventListener("astro:page-load", () => {
+        syncButton();
+        document
+          .querySelector(".theme-toggle")
+          ?.addEventListener("click", () => {
+            const theme =
+              document.documentElement.dataset.theme === "dark"
+                ? "light"
+                : "dark";
+            document.documentElement.dataset.theme = theme;
+            try {
+              localStorage.setItem("theme", theme);
+            } catch {}
+            syncButton();
+          });
+      });
+      matchMedia("(prefers-color-scheme: dark)").addEventListener(
+        "change",
+        (event) => {
+          let saved;
+          try {
+            saved = localStorage.getItem("theme");
+          } catch {}
+          if (!saved) {
+            document.documentElement.dataset.theme = event.matches
+              ? "dark"
+              : "light";
+            syncButton();
+          }
+        },
+      );
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../assets/portrait.jpg";
+import Base from "../layouts/BaseLayout.astro";
+import ProfileLinks from "../components/ProfileLinks.astro";
+import { site } from "../data/site";
+import { research, internships } from "../data/experience";
+import news from "../data/news.json";
+---
+
+<Base title="About">
+  <div class="page-heading">
+    <p class="eyebrow">A little background</p>
+    <h1>
+      About<span class="accent">.</span>
+    </h1>
+  </div>
+  <section class="about-intro" aria-label="Introduction">
+    <Image
+      class="portrait"
+      src={portrait}
+      alt="Ritvik Prabhu"
+      widths={[230, 460]}
+      sizes="(max-width: 480px) 180px, (max-width: 760px) 150px, 230px"
+      width={460}
+      height={560}
+      loading="eager"
+    />
+    <div class="about-copy">
+      <p>{site.introduction}</p>
+      <p>
+        My research experience spans scalable genomic analysis, medical imaging,
+        interactive visual analytics, and GPU kernel optimization.
+      </p>
+      <p class="location">{site.location}</p>
+      <ProfileLinks />
+    </div>
+  </section>
+  {[
+    { title: "Research", entries: research },
+    { title: "Internships", entries: internships },
+  ].map((section) => (
+    <section class="cv-section">
+      <h2>{section.title}</h2>
+      <div>
+        {section.entries.map((entry) => (
+          <article class="experience">
+            <p class="dates">{entry.dates}</p>
+            <h3>
+              {entry.url ? (
+                <a href={entry.url}>{entry.organization} ↗</a>
+              ) : (
+                entry.organization
+              )}
+            </h3>
+            <p class="role">{entry.role}</p>
+            <p class="location">{entry.location}</p>
+            <p class="summary">{entry.summary}</p>
+            <ul>
+              {entry.details.map((detail) => (
+                <li>{detail}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+  <section class="cv-section">
+    <h2>Education</h2>
+    <div>
+      <article class="experience">
+        <h3>Virginia Tech</h3>
+        <p class="role">PhD student, Computer Science</p>
+        <p class="location">Blacksburg, Virginia</p>
+        <p class="summary">Successfully defended MS thesis in May 2026.</p>
+      </article>
+    </div>
+  </section>
+  <section class="cv-section">
+    <h2>News & highlights</h2>
+    <div>
+      {news.map((item) => (
+        <div class="news-row">
+          <time>{item.date}</time>
+          <p>{item.title}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</Base>
