@@ -18,9 +18,7 @@ const {
   updated,
   noindex = false,
 } = Astro.props;
-const fullTitle = title
-  ? `${title} — ${site.name}`
-  : `${site.name} — Research & writing`;
+const fullTitle = title ? `${title} — ${site.name}` : site.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const nav = [
   ["Home", "/"],
