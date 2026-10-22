@@ -199,9 +199,12 @@ main:focus {
 .intro {
   display: grid;
   grid-template-columns: 1fr 1.12fr;
-  gap: 80px;
+  gap: 24px 80px;
   padding-block: 96px 40px;
   align-items: center;
+}
+.intro-links {
+  grid-column: 2;
 }
 .eyebrow {
   font-size: 18px;
@@ -228,9 +231,13 @@ main:focus {
 }
 .typing::after,
 .typed .typed-line:last-child .typed-ink::after {
-  content: "│";
-  font-size: 0.8em;
-  font-weight: 400;
+  content: "";
+  display: inline-block;
+  width: 0.045em;
+  height: 0.7em;
+  margin-left: 0.12em;
+  background: currentColor;
+  vertical-align: baseline;
 }
 .typed .typed-line:last-child .typed-ink::after {
   animation: cursor-blink 1.1s step-end infinite;
@@ -243,7 +250,6 @@ main:focus {
 .intro-copy > p {
   font-size: 24px;
   line-height: 1.55;
-  margin-bottom: 24px;
 }
 .intro-about {
   display: inline-block;
@@ -772,6 +778,9 @@ footer a {
     grid-template-columns: 1fr;
     gap: 36px;
     padding-block: 58px 32px;
+  }
+  .intro-links {
+    grid-column: 1;
   }
   .intro h1 br {
     display: none;
