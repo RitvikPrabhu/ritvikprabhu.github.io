@@ -2,7 +2,7 @@
   {
     "id": "first-principles-to-modern-llms",
     "title": "From First Principles to Modern LLMs",
-    "description": "From learning language to the architectures and systems that make it scale. One question at a time, from the math to the machine.",
+    "description": "A hands-on journey through the modern language models. Building, training, and optimizing my own LLM while exploring the mathematics and systems that make it work.",
     "cover": "/images/llm-series-cover.jpg",
     "coverAlt": "Mountains reflected in a still lake",
     "sortOrder": 1
