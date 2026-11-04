@@ -1,4 +1,4 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, reference } from "astro:content";
 import { z } from "astro/zod";
 import { glob, file } from "astro/loaders";
 
@@ -35,6 +35,17 @@ const publications = defineCollection({
     sortOrder: z.number().default(999),
   }),
 });
+const series = defineCollection({
+  loader: file("src/data/series.json"),
+  schema: z.object({
+    title: z.string().min(1),
+    description: z.string().min(1),
+    cover: z.string().startsWith("/"),
+    coverAlt: z.string().min(1),
+    coverCaption: z.string().optional(),
+    sortOrder: z.number().default(0),
+  }),
+});
 const writing = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/writing" }),
   schema: ({ image }) =>
@@ -46,7 +57,13 @@ const writing = defineCollection({
       draft: z.boolean().default(false),
       example: z.boolean().default(false),
       tags: z.array(z.string()).default([]),
+      series: z
+        .object({
+          id: reference("series"),
+          order: z.number().int().positive(),
+        })
+        .optional(),
       thumbnail: z.object({ src: image(), alt: z.string().min(1) }).optional(),
     }),
 });
-export const collections = { publications, writing };
+export const collections = { publications, writing, series };

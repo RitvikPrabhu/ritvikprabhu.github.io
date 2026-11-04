@@ -1,0 +1,41 @@
+---
+import { getEntry, type CollectionEntry } from "astro:content";
+import { writing, seriesPosts } from "../data/content";
+interface Props {
+  post: CollectionEntry<"writing">;
+}
+const { post } = Astro.props;
+const series = (await getEntry(post.data.series!.id))!;
+const posts = seriesPosts(series.id, await writing());
+const index = posts.findIndex((p) => p.id === post.id);
+const neighbors = [
+  { label: "Previous post", post: posts[index - 1] },
+  { label: "Next post", post: posts[index + 1] },
+];
+---
+
+<nav class="series-navigation" aria-label="Series reading order">
+  <a href={`/writing/series/${series.id}/`}>
+    {series.data.title} · All posts ↑
+  </a>
+  <div class="chapter-neighbors">
+    {neighbors.map(({ label, post: neighbor }) => (
+      <div>
+        <p class="series-label">{label}</p>
+        {neighbor ? (
+          <a href={`/writing/${neighbor.id}/`}>
+            {label === "Previous post" ? "← " : ""}
+            {neighbor.data.title}
+            {label === "Next post" ? " →" : ""}
+          </a>
+        ) : (
+          <p>
+            {label === "Previous post"
+              ? "You’re at the beginning"
+              : "You’re up to date"}
+          </p>
+        )}
+      </div>
+    ))}
+  </div>
+</nav>

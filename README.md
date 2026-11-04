@@ -75,6 +75,40 @@ An optional `thumbnail` contains a local `src` and required descriptive `alt`. A
 
 Both search interfaces keep result counts screen-reader-only, with compact spacing between filters and results.
 
+## “From First Principles to Modern LLMs” series
+
+The Blog page at `/writing/` is a multi-series library. One click anywhere on a series card opens `/writing/series/<id>/`, showing all available post cards directly. One click anywhere on a post card opens the article. There are no act pages, expand controls, or intermediate screens. Only published, non-example posts are shown; no roadmap, future titles, empty acts, draft counts, or planned totals reach the public UI. A series with no posts has a simple empty state and RSS link. Standalone posts keep a separate chronological, searchable list below the series cards.
+
+### Add a chapter
+
+1. Copy `templates/series-post.md` to `src/content/writing/your-stable-slug.md` (or `.mdx`). The template lives outside the content collection and can never become a public page accidentally.
+2. Set the title, description, actual publication date, and the series metadata:
+
+   ```yaml
+   series:
+     id: first-principles-to-modern-llms
+     order: 1
+   ```
+
+   `id` matches an entry in `src/data/series.json`; `order` is a positive integer, unique among published posts within that series. Order values may have gaps to reserve space for drafts, but public cards and article positions are numbered contiguously across available posts. Dates never control series order. Omit the entire `series` field for a standalone post. Unknown series and duplicate published positions fail the build.
+
+3. Keep `draft: true` while writing. Follow the five scaffold sections: question → mathematics → implementation → experiment → next limitation. The prompts ask for tensor shapes, complexity, a correct baseline and improvement, correctness/speed/memory/scaling comparisons, and reproducibility details. Replace prompts with real writing and measured evidence; do not publish an empty scaffold.
+4. Set `draft: false` when ready. Run `npm run check`, `npm run format:check`, and `npm run build`. The series page adds the post card automatically. Each article gets its position among available posts, a five-section table of contents, series link, and previous/next available posts. The latest post says “You’re up to date,” never inventing a future title or claiming the series is finished.
+
+The full four-act LLM roadmap remains in `templates/llm-roadmap.md`, outside the public content collection. It is authoring guidance only and is not imported by the site. A post’s filename is its stable URL; `series.order` controls its reading position independently.
+
+### Add another series
+
+Append an object to `src/data/series.json` with a unique URL-safe `id`, `title`, `description`, local `cover` path, `coverAlt`, optional `coverCaption`, and `sortOrder` (ascending library order). Copy the existing entry as a starting point. The collection validates the fields, and the catalog card and series page are generated automatically, even before the first post. No new component or route is needed. Add posts with that ID and their intended order using the same scaffold.
+
+Run `node --test tests/series.test.mjs` for the publishing regression test. It builds with temporary series/posts, checks catalog-to-series-to-article links, independent series ordering, draft exclusion, published-only navigation, and invalid/duplicate assignments, then removes its fixtures and rebuilds the real site. Run it separately from other builds or content editing.
+
+### Replace the temporary cover
+
+Replace `public/images/llm-series-cover.jpg` with the supplied image, or change the entry’s `cover` in `src/data/series.json` to a different local public path. Update `coverAlt` with an accurate description and replace/remove `coverCaption`. Both the library card and series page use the same cover. It is cropped to 4:3 on desktop and 16:9 on narrow screens; choose a landscape with room around its subject. It is a local file, so visitors do not depend on an external image host.
+
+The temporary landscape comes from [Unsplash](https://images.unsplash.com/photo-1470770841072-f978cf4d019e). It is only a replaceable visual placeholder, not an article illustration.
+
 ## Profile, About, and design
 
 - `src/data/site.ts`: name, homepage introduction, single-paragraph About biography, contact/profile URLs, location, and optional CV URL. Email is `ritvikp@vt.edu`.
