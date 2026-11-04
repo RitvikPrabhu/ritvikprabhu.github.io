@@ -11,6 +11,10 @@ import rehypeExternalLinks from "rehype-external-links";
 export default defineConfig({
   site: "https://ritvikprabhu.github.io",
   output: "static",
+  outDir: process.env.AMP_PREVIEW === "1" ? "./.amp/preview/" : "./dist/",
+  build: {
+    inlineStylesheets: process.env.AMP_PREVIEW === "1" ? "always" : "auto",
+  },
   trailingSlash: "always",
   devToolbar: { enabled: false },
   vite: {

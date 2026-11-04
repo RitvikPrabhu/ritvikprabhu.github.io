@@ -6,23 +6,38 @@ interface Props {
   options: string[];
   count: number;
   noun: string;
+  searchOnly?: boolean;
 }
-const { label, placeholder, groupLabel, options, count, noun } = Astro.props;
+const {
+  label,
+  placeholder,
+  groupLabel,
+  options,
+  count,
+  noun,
+  searchOnly = false,
+} = Astro.props;
 ---
 
-<div class="content-filters" data-noun={noun} hidden>
+<div
+  class="content-filters"
+  data-noun={noun}
+  data-search-only={searchOnly || undefined}
+  hidden
+>
   <label for="content-search">{label}</label>
   <input id="content-search" type="search" placeholder={placeholder} />
   <div class="filter-options" role="group" aria-label={groupLabel}>
-    {["All", ...options].map((option) => (
-      <button
-        type="button"
-        data-filter-type={option}
-        aria-pressed={option === "All"}
-      >
-        {option}
-      </button>
-    ))}
+    {!searchOnly &&
+      ["All", ...options].map((option) => (
+        <button
+          type="button"
+          data-filter-type={option}
+          aria-pressed={option === "All"}
+        >
+          {option}
+        </button>
+      ))}
     <button type="button" class="filter-reset">
       Reset
     </button>
@@ -58,6 +73,10 @@ const { label, placeholder, groupLabel, options, count, noun } = Astro.props;
     const count = controls.querySelector<HTMLElement>(".filter-count")!;
     const empty = document.querySelector<HTMLElement>(".filter-empty")!;
     const noun = controls.dataset.noun!;
+    const searchOnly = controls.dataset.searchOnly === "true";
+    const results = document.querySelector<HTMLElement>(
+      "[data-search-results]",
+    );
     let selected = "All";
     function filter() {
       const terms = input!.value
@@ -83,8 +102,13 @@ const { label, placeholder, groupLabel, options, count, noun } = Astro.props;
           String(button.dataset.filterType === selected),
         ),
       );
-      count.textContent = `${visible} ${noun}${visible === 1 ? "" : "s"}`;
-      empty.hidden = visible > 0 || entries.length === 0;
+      count.textContent =
+        searchOnly && !terms.length
+          ? ""
+          : `${visible} ${noun}${visible === 1 ? "" : "s"}`;
+      empty.hidden =
+        visible > 0 || (searchOnly ? !terms.length : entries.length === 0);
+      if (results) results.hidden = !terms.length;
     }
     input.addEventListener("input", filter);
     buttons.forEach((button) =>

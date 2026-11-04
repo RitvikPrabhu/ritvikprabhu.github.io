@@ -1,23 +1,13 @@
 ---
-import { getCollection, type CollectionEntry } from "astro:content";
-import { seriesPosts } from "../data/content";
-interface Props {
-  posts: CollectionEntry<"writing">[];
-}
-const { posts } = Astro.props;
+import { getCollection } from "astro:content";
 const library = (await getCollection("series")).sort(
   (a, b) => a.data.sortOrder - b.data.sortOrder,
 );
 ---
 
-<section class="series-library" aria-labelledby="library-title">
-  <div class="series-section-heading">
-    <h2 id="library-title">The series library</h2>
-    <p>Choose a series. Follow the ideas, one post at a time.</p>
-  </div>
+<section class="series-library" aria-label="Series">
   <div class="series-catalog">
     {library.map((series) => {
-      const count = seriesPosts(series.id, posts).length;
       return (
         <a class="series-card" href={`/writing/series/${series.id}/`}>
           <img
@@ -27,14 +17,7 @@ const library = (await getCollection("series")).sort(
             height="750"
           />
           <div>
-            <p class="series-label">An ordered series</p>
             <h3>{series.data.title}</h3>
-            <p class="series-deck">{series.data.description}</p>
-            <p class="series-status">
-              {count
-                ? `${count} published ${count === 1 ? "post" : "posts"}`
-                : "No posts published yet"}
-            </p>
             <span class="text-link">Explore series →</span>
           </div>
         </a>

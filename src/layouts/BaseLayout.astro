@@ -24,7 +24,7 @@ const nav = [
   ["Home", "/"],
   ["About", "/about/"],
   ["Publications", "/publications/"],
-  ["Blog", "/writing/"],
+  ["Blogs", "/writing/"],
 ];
 ---
 
@@ -142,6 +142,43 @@ const nav = [
           <path d="M20 14A8.5 8.5 0 0 1 10 4a8.5 8.5 0 1 0 10 10Z" />
         </svg>
       </button>
+      <details class="mobile-nav">
+        <summary aria-label="Navigation menu">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </summary>
+        <nav aria-label="Main navigation">
+          {nav.map(([label, href]) => (
+            <a
+              href={href}
+              aria-current={
+                (
+                  href === "/"
+                    ? Astro.url.pathname === "/"
+                    : Astro.url.pathname.startsWith(href)
+                )
+                  ? "page"
+                  : undefined
+              }
+            >
+              {label}
+            </a>
+          ))}
+          {site.cv && (
+            <a href={site.cv} target="_blank" rel="noopener noreferrer">
+              CV ↗
+            </a>
+          )}
+        </nav>
+      </details>
     </header>
     <main id="main" class="shell" tabindex="-1">
       <slot />
@@ -179,6 +216,18 @@ const nav = [
             } catch {}
             syncButton();
           });
+        const menu = document.querySelector<HTMLDetailsElement>(".mobile-nav");
+        menu?.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            menu.open = false;
+            menu.querySelector("summary")?.focus();
+          }
+        });
+        menu?.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menu.open = false;
+          });
+        });
       });
       matchMedia("(prefers-color-scheme: dark)").addEventListener(
         "change",

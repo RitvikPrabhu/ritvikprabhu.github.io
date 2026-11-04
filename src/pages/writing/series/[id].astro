@@ -24,18 +24,11 @@ const data = series.data;
   </div>
   <header class="series-hero">
     <div>
-      <p class="series-label">An ordered series</p>
       <h1>
         {data.title}
         <span class="accent">.</span>
       </h1>
       <p class="series-deck">{data.description}</p>
-      {posts.length > 0 && (
-        <p class="series-status">
-          {posts.length} published {posts.length === 1 ? "post" : "posts"} ·
-          Read in the order below
-        </p>
-      )}
     </div>
     <figure class="series-cover">
       <img src={data.cover} alt={data.coverAlt} width="1000" height="750" />
@@ -45,8 +38,7 @@ const data = series.data;
   {posts.length > 0 ? (
     <section aria-labelledby="series-posts-title">
       <div class="series-section-heading">
-        <h2 id="series-posts-title">The reading order</h2>
-        <p>Start at the top. Each post builds on the last.</p>
+        <h2 id="series-posts-title">Posts</h2>
       </div>
       <ol class="series-posts">
         {posts.map((post, index) => (
@@ -73,9 +65,6 @@ const data = series.data;
   ) : (
     <section class="series-empty" aria-labelledby="series-empty-title">
       <h2 id="series-empty-title">No posts published yet.</h2>
-      <p>
-        Published posts will appear here, in reading order, when they’re ready.
-      </p>
       <a href="/rss.xml">Follow via RSS ↗</a>
     </section>
   )}

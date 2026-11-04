@@ -17,6 +17,8 @@ npm run preview
 
 `npm run format` formats the source. Builds write to `dist/`. In Amp orbs, `amp orb services ensure` starts the declared preview service; use the Portal tab to review it.
 
+The orb service uses `AMP_PREVIEW=1` for both build and preview. This serves bundled pages from `.amp/preview/` with inline styles, avoiding a render-blocking stylesheet round trip on high-latency portal connections. It keeps the review widget and normal scripts. Ordinary `npm run build` and GitHub Pages retain Astro’s default stylesheet behavior and `dist/` output; the preview never overwrites the production build. Restart the orb service after editing content to rebuild its snapshot.
+
 ## Add a publication
 
 Edit `src/data/publications.json`. This is the only publication source; Astro validates it through the `publications` collection in `src/content.config.ts`. Copy an existing entry, assign a unique `id`, and update:
@@ -69,7 +71,7 @@ Write the body below the frontmatter. Begin sections at `##`; the layout supplie
 
 Set `draft: false` when ready and commit. Drafts are excluded from generated routes, lists, sitemap, and RSS. The filename becomes the stable `/writing/my-post/` URL; dates do not change it. Dates are displayed in UTC to avoid calendar-day shifts. A table of contents appears when there are at least four level-two sections. Posts receive canonical and OpenGraph metadata automatically. RSS is `/rss.xml`.
 
-The navigation and page title call this section **Blog**, while `/writing/` and article URLs stay unchanged. Tags become topic filters automatically. Search matches title, description, date, and topics, and combines with the selected topic. Reset clears both. The shared `ContentFilters.astro` supplies the same accessible behavior for publications and posts, with no client framework or search service.
+The navigation calls this section **Blogs**, while `/writing/` and article URLs stay unchanged. Home lists the three latest published articles directly, newest first, regardless of series reading order; each title opens its article. The library’s article search matches published posts across every series by title, description, date, tags, and series name. Search is case-insensitive and requires all query words to match. Results appear only while a query is entered, include their series name, and link directly to the article. Reset clears the query and hides results. Search is available only on the main Blog library; individual series pages show their ordered post cards directly. Drafts, examples, and posts without series metadata never enter the search index. Publication search retains its type filters. The shared `ContentFilters.astro` supplies both interfaces, with no client framework or search service. Without JavaScript, search stays hidden; series navigation and ordered post cards remain available.
 
 An optional `thumbnail` contains a local `src` and required descriptive `alt`. Astro validates and optimizes it, and rows without images stay text-only. The same post rows appear on Home and the Blog page. The single `example.mdx` demonstrates formatting and thumbnail frontmatter but remains a draft in the repository. It has no public route and never appears in listings, topic filters, RSS, or sitemap. No example content is displayed on the website.
 
@@ -77,7 +79,7 @@ Both search interfaces keep result counts screen-reader-only, with compact spaci
 
 ## “From First Principles to Modern LLMs” series
 
-The Blog page at `/writing/` is a multi-series library. One click anywhere on a series card opens `/writing/series/<id>/`, showing all available post cards directly. One click anywhere on a post card opens the article. There are no act pages, expand controls, or intermediate screens. Only published, non-example posts are shown; no roadmap, future titles, empty acts, draft counts, or planned totals reach the public UI. A series with no posts has a simple empty state and RSS link. Standalone posts keep a separate chronological, searchable list below the series cards.
+The Blog page at `/writing/` is a multi-series library with compact cover-and-title cards. One click anywhere on a series card opens `/writing/series/<id>/`, showing all available post cards directly. One click anywhere on a post card opens the article. There are no act pages, expand controls, or intermediate screens. Only published, non-example posts are shown; no roadmap, future titles, empty acts, draft counts, or planned totals reach the public UI. A series with no posts has a simple empty state and RSS link. There is no standalone-post section; library search covers articles belonging to a series.
 
 ### Add a chapter
 
@@ -90,7 +92,7 @@ The Blog page at `/writing/` is a multi-series library. One click anywhere on a 
      order: 1
    ```
 
-   `id` matches an entry in `src/data/series.json`; `order` is a positive integer, unique among published posts within that series. Order values may have gaps to reserve space for drafts, but public cards and article positions are numbered contiguously across available posts. Dates never control series order. Omit the entire `series` field for a standalone post. Unknown series and duplicate published positions fail the build.
+   `id` matches an entry in `src/data/series.json`; `order` is a positive integer, unique among published posts within that series. Order values may have gaps to reserve space for drafts, but public cards and article positions are numbered contiguously across available posts. Dates never control series order. Include series metadata for every article intended for the blog library. Unknown series and duplicate published positions fail the build.
 
 3. Keep `draft: true` while writing. Follow the five scaffold sections: question → mathematics → implementation → experiment → next limitation. The prompts ask for tensor shapes, complexity, a correct baseline and improvement, correctness/speed/memory/scaling comparisons, and reproducibility details. Replace prompts with real writing and measured evidence; do not publish an empty scaffold.
 4. Set `draft: false` when ready. Run `npm run check`, `npm run format:check`, and `npm run build`. The series page adds the post card automatically. Each article gets its position among available posts, a five-section table of contents, series link, and previous/next available posts. The latest post says “You’re up to date,” never inventing a future title or claiming the series is finished.
@@ -101,7 +103,7 @@ The full four-act LLM roadmap remains in `templates/llm-roadmap.md`, outside the
 
 Append an object to `src/data/series.json` with a unique URL-safe `id`, `title`, `description`, local `cover` path, `coverAlt`, optional `coverCaption`, and `sortOrder` (ascending library order). Copy the existing entry as a starting point. The collection validates the fields, and the catalog card and series page are generated automatically, even before the first post. No new component or route is needed. Add posts with that ID and their intended order using the same scaffold.
 
-Run `node --test tests/series.test.mjs` for the publishing regression test. It builds with temporary series/posts, checks catalog-to-series-to-article links, independent series ordering, draft exclusion, published-only navigation, and invalid/duplicate assignments, then removes its fixtures and rebuilds the real site. Run it separately from other builds or content editing.
+Run `node --test tests/series.test.mjs` for the publishing regression test. It builds with temporary series/posts into a temporary output directory, leaving `dist/` and the orb preview untouched. It checks catalog-to-series-to-article links, independent series ordering, draft/unassigned-post exclusion from search, published-only navigation, and invalid/duplicate assignments, then removes its fixtures and temporary output. Run it separately from other builds or content editing.
 
 ### Replace the temporary cover
 

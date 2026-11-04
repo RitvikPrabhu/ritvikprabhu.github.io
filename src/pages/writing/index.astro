@@ -4,12 +4,7 @@ import PostList from "../../components/PostList.astro";
 import ContentFilters from "../../components/ContentFilters.astro";
 import SeriesLibrary from "../../components/SeriesLibrary.astro";
 import { writing } from "../../data/content";
-const posts = await writing();
-const standalone = posts.filter((p) => !p.data.series);
-const years = [
-  ...new Set(standalone.map((p) => p.data.published.getUTCFullYear())),
-];
-const tags = [...new Set(standalone.flatMap((p) => p.data.tags))].sort();
+const posts = (await writing()).filter((post) => post.data.series);
 ---
 
 <Base
@@ -21,34 +16,22 @@ const tags = [...new Set(standalone.flatMap((p) => p.data.tags))].sort();
       Blog<span class="accent">.</span>
     </h1>
   </div>
-  <SeriesLibrary posts={posts} />
-  {standalone.length > 0 && (
-    <section aria-labelledby="all-posts-title">
-      <h2 id="all-posts-title">Standalone posts</h2>
-      <ContentFilters
-        label="Search posts"
-        placeholder="Title, description or topic"
-        groupLabel="Blog topics"
-        options={tags}
-        count={standalone.length}
-        noun="post"
-      />
-      <p class="filter-empty" hidden>
-        No posts match. Try another search or topic.
-      </p>
-      {years.map((year) => (
-        <section class="year-group" data-filter-group>
-          <h2>{year}</h2>
-          <PostList
-            filterable
-            posts={standalone.filter(
-              (p) => p.data.published.getUTCFullYear() === year,
-            )}
-          />
-        </section>
-      ))}
-    </section>
-  )}
+  <ContentFilters
+    label="Search articles"
+    placeholder="Title, description, topic or series"
+    groupLabel="Article search"
+    options={[]}
+    count={posts.length}
+    noun="article"
+    searchOnly
+  />
+  <section data-search-results hidden aria-label="Article search results">
+    <p class="filter-empty" hidden>
+      No published articles match your search.
+    </p>
+    <PostList posts={posts} filterable />
+  </section>
+  <SeriesLibrary />
   <p class="series-subscribe">
     New chapters will appear here when ready.{" "}
     <a href="/rss.xml">Follow via RSS ↗</a>
